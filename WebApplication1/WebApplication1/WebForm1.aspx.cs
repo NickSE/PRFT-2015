@@ -11,16 +11,17 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            btnInlog.ServerClick += btnInlog_ServerClick;            
+            btnInlog.ServerClick += btnInlog_ServerClick; 
+            
         }
 
         void btnInlog_ServerClick(object sender, EventArgs e)
-        {
+        {           
             //nieuwe db
             Database db = new Database();
             //wachtwoord en gebruikersnaam naar string zetten
-            string gebruikersnaam = Convert.ToString(username);
-            string wachtwoord = Convert.ToString(password);
+            string gebruikersnaam = Request["username"];
+            string wachtwoord = Convert.ToString(password.Value);
             //inlog check
             if (db.logIn(gebruikersnaam, wachtwoord))
             {
