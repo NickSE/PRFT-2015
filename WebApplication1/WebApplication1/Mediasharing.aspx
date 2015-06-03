@@ -82,9 +82,12 @@
 			</main>
 		</div>
 	</div>
+    <form id="mediaForm" runat="server">
     <div class="form-group">
   <label for="comment">Comment:</label>
-  <textarea class="form-control" rows="5" id="comment"></textarea>
-</div>   
+  <textarea type="text" class="form-control" aria-valuetext="" rows="5" id="comment" runat="server"></textarea>
+            <div><button type="submit" name="post" class="btn btn-default" id="btnPost" runat="server">Post!</button></div>  
+</div>
+      </form>
 </body>
 </html>
