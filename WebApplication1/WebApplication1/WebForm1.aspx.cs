@@ -11,8 +11,18 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            btnInlog.ServerClick += btnInlog_ServerClick;            
+        }
+
+        void btnInlog_ServerClick(object sender, EventArgs e)
+        {
+            //nieuwe db
             Database db = new Database();
-            if(db.logIn("x", "x"))
+            //wachtwoord en gebruikersnaam naar string zetten
+            string gebruikersnaam = Convert.ToString(username);
+            string wachtwoord = Convert.ToString(password);
+            //inlog check
+            if (db.logIn(gebruikersnaam, wachtwoord))
             {
                 JeMoeder.InnerHtml = "Je bent ingelogd!";
             }
