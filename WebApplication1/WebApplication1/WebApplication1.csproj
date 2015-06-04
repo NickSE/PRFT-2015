@@ -61,12 +61,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EventBeheer.aspx" />
     <Content Include="Mediasharing.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
+    <Compile Include="EventBeheer.aspx.cs">
+      <DependentUpon>EventBeheer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EventBeheer.aspx.designer.cs">
+      <DependentUpon>EventBeheer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mediasharing.aspx.cs">
       <DependentUpon>Mediasharing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
