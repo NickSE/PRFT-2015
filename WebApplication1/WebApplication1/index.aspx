@@ -23,6 +23,6 @@
     <div>
     <div id="JeMoeder" runat="server">Hallo</div>
     </div>
-    <a href ="Mediasharing.aspx">Mediasharing</a>
+    <a href ="Mediasharing">Mediasharing</a>
 </body>
 </html>

@@ -14,7 +14,7 @@ namespace WebApplication1.Scherm
         protected void Page_Load(object sender, EventArgs e)
         {
             
-           /* btnInlog.ServerClick += btnInlog_ServerClick; */
+            btnInlog.ServerClick += btnInlog_ServerClick; 
             
         }
 
@@ -24,17 +24,17 @@ namespace WebApplication1.Scherm
             
             //wachtwoord en gebruikersnaam naar string zetten
             //2 manieren om gegevens op te halen Request en .value
-            //string gebruikersnaam = Request["username"];
-            //string wachtwoord = Convert.ToString(password.Value);
+            string gebruikersnaam = Request["username"];
+            string wachtwoord = Convert.ToString(password.Value);
             //inlog check
-            /*if (db.logIn(gebruikersnaam, wachtwoord))
+            if (db.logIn(gebruikersnaam, wachtwoord))
             {
-                //JeMoeder.InnerHtml = "Je bent ingelogd!";
+                JeMoeder.InnerHtml = "Je bent ingelogd!";
             }
             else
             {
-                //JeMoeder.InnerHtml = "Je bent niet aangelogd!";
-            }*/
+                JeMoeder.InnerHtml = "Je bent niet aangelogd!";
+            }
         }
     }
 }
