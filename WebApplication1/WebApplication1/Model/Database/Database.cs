@@ -7,18 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApplication1
+namespace WebApplication1.DB
 
-    /* USERS:
-     * user: 'Kevinisswag', 'geenswag'
-     * Emp.: 'Nick', 'Cactus'
-     * Admin: 'Martijn', 'xxxxxx'
-     * */
 {
-    class Database
+    public class Database
     {
         //fields
-        protected OracleConnection con;
+        private OracleConnection con;
 
        // private static User current;
         //private static Employee loggedInEmployee;

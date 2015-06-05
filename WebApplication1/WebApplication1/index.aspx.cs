@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.DB;
 
-namespace WebApplication1
+namespace WebApplication1.Scherm
 {
     public partial class WebForm1 : System.Web.UI.Page
     {

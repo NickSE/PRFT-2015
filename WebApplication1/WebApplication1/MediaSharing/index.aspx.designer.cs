@@ -7,54 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1 {
+namespace WebApplication1.Scherm {
     
     
-    public partial class WebForm1 {
+    public partial class Mediasharing {
         
         /// <summary>
-        /// form2 control.
+        /// _newMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        protected global::System.Web.UI.HtmlControls.HtmlForm _newMessage;
         
         /// <summary>
-        /// username control.
+        /// _message control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText username;
+        protected global::System.Web.UI.WebControls.TextBox _message;
         
         /// <summary>
-        /// password control.
+        /// _attachmeht control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword password;
+        protected global::System.Web.UI.WebControls.FileUpload _attachmeht;
         
         /// <summary>
-        /// btnInlog control.
+        /// sendNewMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnInlog;
+        protected global::System.Web.UI.WebControls.Button sendNewMessage;
         
         /// <summary>
-        /// JeMoeder control.
+        /// article_list control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl JeMoeder;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl article_list;
     }
 }
