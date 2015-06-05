@@ -13,39 +13,48 @@ namespace WebApplication1 {
     public partial class Mediasharing {
         
         /// <summary>
-        /// media control.
+        /// _newMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl media;
+        protected global::System.Web.UI.HtmlControls.HtmlForm _newMessage;
         
         /// <summary>
-        /// mediaForm control.
+        /// _message control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm mediaForm;
+        protected global::System.Web.UI.WebControls.TextBox _message;
         
         /// <summary>
-        /// comment control.
+        /// _attachmeht control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea comment;
+        protected global::System.Web.UI.WebControls.FileUpload _attachmeht;
         
         /// <summary>
-        /// btnPost control.
+        /// sendNewMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnPost;
+        protected global::System.Web.UI.WebControls.Button sendNewMessage;
+        
+        /// <summary>
+        /// article_list control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl article_list;
     }
 }
