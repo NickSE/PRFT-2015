@@ -61,6 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EventManagement\index.aspx" />
     <Content Include="MediaSharing\index.aspx" />
     <Content Include="resource\style\theme.css" />
     <Content Include="test.aspx" />
@@ -68,6 +69,13 @@
     <Content Include="index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventManagement\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EventManagement\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\UserFile.cs" />
     <Compile Include="Model\Database\Database.cs" />
@@ -101,6 +109,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MediaSharing\Web.config" />
+    <Content Include="EventManagement\Web.config" />
+    <None Include="EventManagement\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="EventManagement\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="MediaSharing\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
