@@ -47,8 +47,7 @@
                     </form>
 			    </article>
                 <hr />
-                <div id="article_list" runat="server">
-                    Loading...
+                <div id="article_list" runat="server">                    
                 </div>
 			</main>
 		</div>

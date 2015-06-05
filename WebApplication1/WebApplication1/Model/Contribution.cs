@@ -7,16 +7,28 @@ namespace WebApplication1.Model
 {
     public class Contribution
     {
-        private int id;
+        public int id;
 
         public int Likes { get; set; }
 
         public string Author { get; set; }
 
-        public Contribution()
+        public DateTime Date { get; set; }
+
+        public Contribution(Contribution con)
         {
-            Likes = 0;
-            Author = "TEMP";
+            this.id = con.id;
+            this.Author = con.Author;
+            this.Date = con.Date;
+            this.Likes = con.Likes;
+        }
+
+        public Contribution(int id, DateTime date, int likes, string author)
+        {
+            this.id = id;
+            this.Date = date;
+            this.Likes = likes;
+            this.Author = author;
         }
     }
 }

@@ -8,10 +8,12 @@ namespace WebApplication1.Model
     class Category : Contribution
     {
         public string Name { get; set; }
+        public Category Parent { get; set; }
 
-        public Category(string name)
+        public Category(Contribution con, string name, Category parent) : base(con)
         {
             this.Name = name;
+            this.Parent = parent;
         }
     }
 }

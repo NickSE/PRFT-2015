@@ -58,17 +58,17 @@ namespace WebApplication1.Scherm
 
                 // Geef artikel een Like, Reageer en report functie
                 article_list.InnerHtml += "<div class=\"do\">";
-                article_list.InnerHtml += "<span>Like!</span>";
-                article_list.InnerHtml += "<span>Reageer</span>";
-                article_list.InnerHtml += "<span>Ongewenst</span>";
+                article_list.InnerHtml += "<button ID=\"doLike\" class=\"btn btn-success\" data-contribution=\"" + i.id + "\" runat=\"server\">Like</button>";
+                article_list.InnerHtml += "<button ID=\"doReact\" class=\"btn btn-primary\" data-contribution=\"" + i.id + "\" runat=\"server\">Reageer</button>";
+                article_list.InnerHtml += "<button ID=\"doReport\" class=\"btn btn-danger\" data-contribution=\"" + i.id + "\" runat=\"server\">Ongewenst</button>";
                 article_list.InnerHtml += "</div>" + "\n";
 
                 // Geef artikel aantal likes
                 article_list.InnerHtml += "<div class\"likes\">";
-                article_list.InnerHtml += "<span><b>" + i.Likes + "</b> likes</span>";
+                article_list.InnerHtml += "<span><b>" + i.Likes + "</b> like(s)</span>";
                 article_list.InnerHtml += "</div>" + "\n";
 
-                // Laadt berichten
+                // Laadt reacties
                 // ...
 
                 // Sluit artikel

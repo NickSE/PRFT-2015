@@ -10,9 +10,15 @@ namespace WebApplication1.Model
 
         public string Content { get; set; }
 
-        public Message(string Content)
+        public string Title { get; set; }
+
+        public Contribution Reaction { get; set; }
+
+        public Message(Contribution con, string content, string title, Contribution reaction) : base(con)
         {
             this.Content = Content;
+            this.Title = title;
+            this.Reaction = reaction;
         }
     }
 }
