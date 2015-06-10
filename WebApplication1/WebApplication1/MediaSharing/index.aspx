@@ -43,7 +43,7 @@
                         <br />
                         <asp:FileUpload ID="_attachmeht" runat="server" />
                         <br />
-                        <asp:Button ID="sendNewMessage" runat="server" Text="Versuur" />
+                        <asp:Button ID="sendNewMessage" runat="server" Text="Verstuur" />
                     </form>
 			    </article>
                 <hr />
