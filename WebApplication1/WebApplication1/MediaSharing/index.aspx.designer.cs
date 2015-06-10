@@ -13,40 +13,94 @@ namespace WebApplication1.Scherm {
     public partial class Mediasharing {
         
         /// <summary>
-        /// _newMessage control.
+        /// user control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm _newMessage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl user;
         
         /// <summary>
-        /// _message control.
+        /// categories control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _message;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect categories;
         
         /// <summary>
-        /// _attachmeht control.
+        /// newMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload _attachmeht;
+        protected global::System.Web.UI.HtmlControls.HtmlForm newMessage;
         
         /// <summary>
-        /// sendNewMessage control.
+        /// titel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button sendNewMessage;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText titel;
+        
+        /// <summary>
+        /// inhoud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText inhoud;
+        
+        /// <summary>
+        /// sendMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit sendMessage;
+        
+        /// <summary>
+        /// filePath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload filePath;
+        
+        /// <summary>
+        /// sendFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit sendFile;
+        
+        /// <summary>
+        /// cat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText cat;
+        
+        /// <summary>
+        /// sendCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit sendCategory;
         
         /// <summary>
         /// article_list control.
