@@ -97,7 +97,7 @@ namespace WebApplication1.Scherm
         void sendNewMessage_Click(object sender, EventArgs e)
         {
             // Send new message to DB
-            // MSDatabase.addMessage()
+            // MSDatabase.addMessage()            
         }
 
         [System.Web.Services.WebMethod]
