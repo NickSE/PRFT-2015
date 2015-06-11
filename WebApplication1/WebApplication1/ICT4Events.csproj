@@ -69,6 +69,7 @@
     <Content Include="index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventManagement\Events.cs" />
     <Compile Include="EventManagement\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -76,7 +77,11 @@
     <Compile Include="EventManagement\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EventManagement\Locatie.cs" />
+    <Compile Include="EventManagement\Plek.cs" />
+    <Compile Include="EventManagement\specification.cs" />
     <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Database\EMDatabase.cs" />
     <Compile Include="Model\UserFile.cs" />
     <Compile Include="Model\Database\Database.cs" />
     <Compile Include="MediaSharing\index.aspx.cs">
