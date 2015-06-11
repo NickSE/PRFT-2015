@@ -83,6 +83,7 @@
     <Compile Include="EventManagement\specification.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Database\EMDatabase.cs" />
+    <Compile Include="Model\Database\UMDatabase.cs" />
     <Compile Include="Model\UserFile.cs" />
     <Compile Include="Model\Database\Database.cs" />
     <Compile Include="MediaSharing\index.aspx.cs">
@@ -119,6 +120,7 @@
     <Compile Include="UserManagement\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserManagement\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MediaSharing\Web.config" />
