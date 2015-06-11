@@ -22,19 +22,28 @@ namespace WebApplication1.EventManagement
 
         protected void btnCreateLocation_Click(object sender, EventArgs e)
         {
-            string naam = tbNameLocation.Text;
-            string straat = tbStreetLocation.Text;
-            string nr = tbNrLocation.Text;
-            string postcode = tbPostcodeLocation.Text;
-            string plaats = tbCityLocation.Text;
+            try
+            {
+                string naam = tbNameLocation.Text;
+                string straat = tbStreetLocation.Text;
+                string nr = tbNrLocation.Text;
+                string postcode = tbPostcodeLocation.Text;
+                string plaats = tbCityLocation.Text;
 
-            Locatie newlocatie = new Locatie(db.getLatestId("locatie"), naam, straat, nr, postcode, plaats);
-            if (edb.AddLocation(newlocatie))
-            { // ok
+                Locatie newlocatie = new Locatie(db.getLatestId("locatie"), naam, straat, nr, postcode, plaats);
+                if (edb.AddLocation(newlocatie))
+                {
+                    refreshAllDropdown();
+                        RefreshLocaties();
+                }
+                else
+                { //niet ok
+                }
             }
-            else
-            { //niet ok
+            catch { 
+            // werkt niet
             }
+
 
 
         }
@@ -52,7 +61,14 @@ namespace WebApplication1.EventManagement
 
 
                 Events newEvent = new Events(db.getLatestId("event"), name, start, end, max, id);
-                edb.AddEvent(newEvent);
+                if(edb.AddEvent(newEvent))
+                {
+                    RefreshEvents();
+                }
+                else
+                {
+                    //wrkt niet
+                }
             }
             catch
             {
@@ -68,8 +84,8 @@ namespace WebApplication1.EventManagement
                 int capa = Convert.ToInt32(tbCapacityPlek.Text);
                 int location_id = Convert.ToInt32(dbLocationPlek.SelectedValue);
                 int id = db.getLatestId("plek");
-                Plek newEvent = new Plek(id, nr, capa, location_id);
-
+                Plek newplek = new Plek(id, nr, capa, location_id);
+                edb.AddPlek(newplek);
                 // add specification --------------------------------------------------------------------------------------
                 foreach (ListItem spec in lbSpecificationPlek.Items)
                 {
@@ -79,6 +95,7 @@ namespace WebApplication1.EventManagement
                 }
 
                 lbSpecificationPlek.Items.Clear();
+                Refreshplek();
             }
             catch
             {
@@ -104,6 +121,7 @@ namespace WebApplication1.EventManagement
             int id = Convert.ToInt32(lbLocation.SelectedValue);
             edb.deleteLocation(id);
             RefreshLocaties();
+            refreshAllDropdown();
             
         }
 
