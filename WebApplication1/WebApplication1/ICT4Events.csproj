@@ -65,6 +65,7 @@
     <Content Include="MediaSharing\index.aspx" />
     <Content Include="resource\style\theme.css" />
     <Content Include="test.aspx" />
+    <Content Include="UserManagement\index.aspx" />
     <Content Include="Web.config" />
     <Content Include="index.aspx" />
   </ItemGroup>
@@ -111,6 +112,13 @@
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserManagement\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserManagement\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MediaSharing\Web.config" />
@@ -125,6 +133,13 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="MediaSharing\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="UserManagement\Web.config" />
+    <None Include="UserManagement\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="UserManagement\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Debug.config">
