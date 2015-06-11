@@ -35,11 +35,11 @@ namespace WebApplication1.DB
                 return false;
             }
         }
-        public bool deleteEvent(User user)
+        public bool DeleteUser(int id)
         {
             try
             {
-                doQuery("DELETE FROM persoon WHERE id = " + user.id + ";");
+                doQuery("DELETE FROM persoon WHERE id = " + id + ";");
                 return true;
             }
             catch
