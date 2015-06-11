@@ -7,108 +7,90 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.Scherm {
+namespace WebApplication1.Entrance {
     
     
-    public partial class Mediasharing {
+    public partial class index {
         
         /// <summary>
-        /// user control.
+        /// Entrance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl user;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Entrance;
         
         /// <summary>
-        /// categories control.
+        /// tbID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect categories;
+        protected global::System.Web.UI.WebControls.TextBox tbID;
         
         /// <summary>
-        /// newMessage control.
+        /// tbBarcode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm newMessage;
+        protected global::System.Web.UI.WebControls.TextBox tbBarcode;
         
         /// <summary>
-        /// titel control.
+        /// btnZoek control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText titel;
+        protected global::System.Web.UI.WebControls.Button btnZoek;
         
         /// <summary>
-        /// inhoud control.
+        /// btnLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inhoud;
+        protected global::System.Web.UI.WebControls.Button btnLink;
         
         /// <summary>
-        /// sendMessage control.
+        /// Naam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit sendMessage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Naam;
         
         /// <summary>
-        /// filePath control.
+        /// pnlProfiel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload filePath;
+        protected global::System.Web.UI.WebControls.Panel pnlProfiel;
         
         /// <summary>
-        /// sendFile control.
+        /// Adres control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit sendFile;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Adres;
         
         /// <summary>
-        /// cat control.
+        /// Betaald control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText cat;
-        
-        /// <summary>
-        /// sendCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit sendCategory;
-        
-        /// <summary>
-        /// article_list control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl article_list;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Betaald;
     }
 }

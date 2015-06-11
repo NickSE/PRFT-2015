@@ -38,3 +38,12 @@ main, aside {
 	padding: 3px 8px;
 	color: #555;
 }
+
+#article_list article {
+    padding: 5px 2px;
+    border-bottom: 1px solid #ddd;
+}
+
+article div.category, article div.file {
+    text-align: center;
+}

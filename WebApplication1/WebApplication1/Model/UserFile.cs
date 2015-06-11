@@ -16,7 +16,7 @@ namespace WebApplication1.Model
 
         public UserFile(Contribution con, string path, int size, Category belongs) : base(con)
         {
-            this.Path = path;
+            this.Path = "uploads/" + path;
             this.Size = size;
             this.Belongs = belongs;
         }
