@@ -47,10 +47,9 @@ namespace WebApplication1.UserManagement
         }
         protected void btnRemoveUser_Click(object sender, EventArgs e)
         {
-            //test
-            //sfsdf
-            //sdff
-                //sdf
+            int id = Convert.ToInt32(lbUser.SelectedValue);
+            udb.DeleteUser(id);
+            RefreshUserList();
         }
         private void RefreshUserList()
         {
