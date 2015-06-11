@@ -67,39 +67,58 @@ namespace WebApplication1.EventManagement
                 string nr = tbNrPlek.Text;
                 int capa = Convert.ToInt32(tbCapacityPlek.Text);
                 int location_id = Convert.ToInt32(dbLocationPlek.SelectedValue);
-                Plek newEvent = new Plek(db.getLatestId("plek"), nr, capa, location_id);
+                int id = db.getLatestId("plek");
+                Plek newEvent = new Plek(id, nr, capa, location_id);
 
                 // add specification --------------------------------------------------------------------------------------
+                foreach (ListItem spec in lbSpecificationPlek.Items)
+                {
+                    string waarde = spec.Value;
+                    string naam = spec.Text;
+                    edb.AddSpecification(naam, waarde, id);
+                }
+
+                lbSpecificationPlek.Items.Clear();
             }
             catch
             {
                 //i cry evry time
             }
+            
         }
 
         protected void btnAddSpecificationPlek_Click(object sender, EventArgs e)
         {
-
+            
+            lbSpecificationPlek.Items.Add(new ListItem(dbSpecificationPlek.SelectedItem.Text, tbValuePlek.Text));
         }
 
         protected void btnRemoveSpecificationPlek_Click(object sender, EventArgs e)
         {
+            lbSpecificationPlek.Items.Remove(lbSpecificationPlek.SelectedItem);
 
         }
 
         protected void btnRemoveLocation_Click(object sender, EventArgs e)
         {
-
+            int id = Convert.ToInt32(lbLocation.SelectedValue);
+            edb.deleteLocation(id);
+            RefreshLocaties();
+            
         }
 
         protected void btnRemoveEvent_Click(object sender, EventArgs e)
         {
-
+            int id = Convert.ToInt32(lbEvent.SelectedValue);
+            edb.deleteEvent(id);
+            RefreshEvents();
         }
 
         protected void btnRemovePlek_Click(object sender, EventArgs e)
         {
-
+            int id = Convert.ToInt32(lbPlek.SelectedValue);
+            edb.deleteplek(id);
+            Refreshplek();
         }
 
         private void RefreshEvents()
