@@ -10,7 +10,7 @@ namespace WebApplication1.DB
     {
         public List<Dictionary<string, object>> getAccount(int account_id)
         {
-            List<Dictionary<string, object>> data = getQuery("SELECT \"voornaam\", \"tussenvoegsel\", \"achternaam\", \"straat\", \"huisnr\", \"woonplaats\", \"betaald\" FROM persoon p LEFT JOIN reservering r on p.ID = r.\"persoon_id\" WHERE p.ID=" + account_id);
+            List<Dictionary<string, object>> data = getQuery("SELECT \"voornaam\", NVL(\"tussenvoegsel\", ' ') tussenvoegsel, \"achternaam\", \"straat\", \"huisnr\", \"woonplaats\", NVL(\"betaald\", 0) betaald FROM persoon p LEFT JOIN reservering r on p.ID = r.\"persoon_id\" WHERE p.ID=" + account_id);
 
             return data;
         }

@@ -25,15 +25,8 @@ namespace WebApplication1.Entrance
             Dictionary<string, object> cur = data[0];
             string naam;
             string adres = (string)cur["straat"] + " " + (string)cur["huisnr"] + ", " + (string)cur["woonplaats"];
-            string betaald;
-            try
-            {
-                naam = (string)cur["voornaam"] + " " + (string)cur["tussenvoegsel"] + " " + (string)cur["achternaam"];
-            }
-            catch
-            {
-                naam = (string)cur["voornaam"] + " " + (string)cur["achternaam"];
-            }
+            string betaald;            
+            naam = (string)cur["voornaam"] + " " + (string)cur["tussenvoegsel"] + " " + (string)cur["achternaam"];
             if (Convert.ToInt32(cur["betaald"]) == 1)
             {
                 betaald = "Ja";
@@ -42,6 +35,9 @@ namespace WebApplication1.Entrance
             {
                 betaald = "Nee";
             }
+                    
+           
+            
             Naam.InnerHtml = "Naam:" + naam;
             Adres.InnerHtml = "Adres:" + adres;
             Betaald.InnerHtml = "Betaald:" + betaald;

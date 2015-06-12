@@ -61,14 +61,23 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Entrance\index.aspx" />
     <Content Include="EventManagement\index.aspx" />
     <Content Include="MediaSharing\index.aspx" />
     <Content Include="resource\style\theme.css" />
+    <Content Include="StyleSheet.css" />
     <Content Include="UserManagement\index.aspx" />
     <Content Include="Web.config" />
     <Content Include="index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entrance\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrance\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EventManagement\Events.cs" />
     <Compile Include="EventManagement\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
