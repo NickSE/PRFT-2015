@@ -16,7 +16,7 @@ namespace WebApplication1.Model
 
         public Message(Contribution con, string content, string title, Contribution reaction) : base(con)
         {
-            this.Content = Content;
+            this.Content = content;
             this.Title = title;
             this.Reaction = reaction;
         }

@@ -56,12 +56,20 @@
                         </div>
                         <div class="tab-pane" id="file">
                             <div class="form-group">
+                                <label for="fileCat">Categorie</label>
+                                <select runat="server" id="fileCat" class="form-control" name="filecat"></select>
+                            </div>
+                            <div class="form-group">
                                 <label for="filePath">Bestand</label>
-                                <asp:FileUpload runat="server" id="filePath" class="form-control" />
+                                <asp:FileUpload runat="server" id="filePath" class="form-control" name="file" />
                             </div>
                                 <input class="btn btn-primary btn-lg btn-block" type="submit" runat="server" id="sendFile" value="Verstuur" />
                         </div>
                         <div class="tab-pane" id="category">
+                            <div class="form-group">
+                                <label for="parentCat">Hoofd Categorie</label>
+                                <select name="parentCat" runat="server" id="parentCat" class="form-control"></select>
+                            </div>
                             <div class="form-group">
                                 <label for="cat">Naam</label>
                                 <input class="form-control" type="text" id="cat" runat="server" />

@@ -43,10 +43,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Resources\Oracle.DataAccess.dll</HintPath>
     </Reference>
-    <Reference Include="Oracle.Web, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\oraclexe\app\oracle\product\11.2.0\server\ASP.NET\bin\2.x\Oracle.Web.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,7 +64,6 @@
     <Content Include="EventManagement\index.aspx" />
     <Content Include="MediaSharing\index.aspx" />
     <Content Include="resource\style\theme.css" />
-    <Content Include="test.aspx" />
     <Content Include="UserManagement\index.aspx" />
     <Content Include="Web.config" />
     <Content Include="index.aspx" />
@@ -110,13 +105,6 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UserManagement\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -156,6 +144,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="MediaSharing\uploads\" />
     <Folder Include="resource\AJAX\" />
   </ItemGroup>
   <PropertyGroup>

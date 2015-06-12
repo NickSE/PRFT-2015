@@ -9,20 +9,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
 </head>
 <body>
-    <form id="form2" runat="server">
-    <div class="form-group">
-  <label for="username">Name:</label>
-  <input type="text" class="form-control" value="" id="username" runat ="server"/><!-- dit wordt het inloggen (gebruikersnaam)-->
-</div>    
-<div class="form-group">
-  <label for="password">Password:</label>
-  <input type="password" class="form-control" id="password" runat ="server"/><!-- dit wordt het inloggen(wachtwoord)-->
-</div>
-    <div><button type="submit" name="inloggen" class="btn btn-default" id="btnInlog" runat="server">Log in!</button></div>  
-        </form>
-    <div>
-    <div id="JeMoeder" runat="server">Hallo</div>
-    </div>
-    <a href ="Mediasharing">Mediasharing</a>
+    <div class="col-md-4"></div>
+    <form id="login" runat="server" class="col-md-4">
+        <p id="error" runat="server" class="bg-danger text-center"></p>
+        <div class="form-group">
+            <label for="username">Name:</label>
+            <input type="text" class="form-control" value="" id="username" runat ="server"/>
+        </div>
+        <div>
+            <button type="submit" name="inloggen" class="btn btn-default btn-block" id="btnInlog" runat="server">Log in!</button>
+        </div>  
+    </form>
+    <div class="col-md-4"></div>
 </body>
 </html>

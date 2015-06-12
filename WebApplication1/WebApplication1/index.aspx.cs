@@ -22,18 +22,19 @@ namespace WebApplication1.Scherm
         {           
             //nieuwe db
             
-            //wachtwoord en gebruikersnaam naar string zetten
-            //2 manieren om gegevens op te halen Request en .value
+            //gebruikersnaam naar string zetten
             string gebruikersnaam = Request["username"];
-            string wachtwoord = Convert.ToString(password.Value);
             //inlog check
-            if (db.logIn(gebruikersnaam, wachtwoord))
+            if (db.logIn(gebruikersnaam))
             {
-                JeMoeder.InnerHtml = "Je bent ingelogd!";
+                Session["login"] = gebruikersnaam;
+                Response.Redirect("/MediaSharing");
             }
             else
             {
-                JeMoeder.InnerHtml = "Je bent niet aangelogd!";
+                Session.Clear();
+                error.InnerText = "Niet ingelogd. Gebruikersnaam niet gevonden.";
+                username.Value = gebruikersnaam; 
             }
         }
     }

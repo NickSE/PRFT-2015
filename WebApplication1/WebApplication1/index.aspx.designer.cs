@@ -13,13 +13,22 @@ namespace WebApplication1.Scherm {
     public partial class WebForm1 {
         
         /// <summary>
-        /// form2 control.
+        /// login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        protected global::System.Web.UI.HtmlControls.HtmlForm login;
+        
+        /// <summary>
+        /// error control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl error;
         
         /// <summary>
         /// username control.
@@ -31,15 +40,6 @@ namespace WebApplication1.Scherm {
         protected global::System.Web.UI.HtmlControls.HtmlInputText username;
         
         /// <summary>
-        /// password control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword password;
-        
-        /// <summary>
         /// btnInlog control.
         /// </summary>
         /// <remarks>
@@ -47,14 +47,5 @@ namespace WebApplication1.Scherm {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnInlog;
-        
-        /// <summary>
-        /// JeMoeder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl JeMoeder;
     }
 }

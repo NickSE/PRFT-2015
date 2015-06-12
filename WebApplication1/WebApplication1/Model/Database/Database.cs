@@ -112,32 +112,11 @@ namespace WebApplication1.DB
         }
        
 
-        public bool logIn(string username, string password)
+        public bool logIn(string username)
         {
-            List<Dictionary<string, object>> data = getQuery("SELECT Id, Username, Voornaam, Tussenvoegsel, Achternaam FROM Gebruiker WHERE Username = '" + username + "' AND Password = '" + password + "'");
+            List<Dictionary<string, object>> data = getQuery("SELECT id FROM ACCOUNT WHERE \"gebruikersnaam\" = '" + username + "'");
             if (data == null)
                 return false;
-
-            if (data.Count > 0) // Logged in!
-            {
-                Dictionary<string, object> cur = data[0];
-                //current = new User(Convert.ToInt16(cur["id"]), (string) cur["username"], (string) cur["voornaam"], (string) cur["tussenvoegsel"], (string) cur["achternaam"]);
-            }
-
-            return data.Count > 0;
-        }
-        public bool empLogIn(string username, string password)
-        {
-             List<Dictionary<string, object>> data = getQuery("SELECT Id, Username, Adminrights, Password From Employee WHERE Username = '" + username + "' AND Password = '" + password + "'");
-
-             if (data == null)
-                 return false;
-
-             if (data.Count > 0) // Logged in!
-             {
-                 Dictionary<string, object> cur = data[0];
-                 //loggedInEmployee = new Employee(Convert.ToInt16(cur["id"]), (string)cur["username"], (string)cur["password"], Convert.ToInt16(cur["adminrights"]) == 1);
-             }
 
             return data.Count > 0;
         }
@@ -152,12 +131,6 @@ namespace WebApplication1.DB
             if (data.Count > 0)
                 return Convert.ToInt16(data[0]["id"]);
             return -1;
-        }
-
-        public void logOut()
-        {
-            //current = null;
-            //loggedInEmployee = null;
         }
     }
 }

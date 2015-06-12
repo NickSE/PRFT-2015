@@ -12,7 +12,7 @@ namespace WebApplication1.DB
         internal List<Contribution> getContributions()
         {
             List<Contribution> ret = new List<Contribution>();
-            List<Dictionary<string, object>> all = getQuery("SELECT b.id, ac.\"gebruikersnaam\", b.\"datum\", b.\"soort\", COUNT(ab.\"like\") AS \"likes\" FROM bijdrage b LEFT JOIN account_bijdrage ab ON b.id = ab.\"bijdrage_id\" JOIN account ac ON ac.id = b.\"account_id\" LEFT JOIN BIJDRAGE_BERICHT bb ON b.id = bb.\"bericht_id\" WHERE bb.\"bijdrage_id\" IS NULL GROUP BY b.id, ac.\"gebruikersnaam\", b.\"datum\", b.\"soort\" ORDER BY b.\"datum\" ASC, b.id");
+            List<Dictionary<string, object>> all = getQuery("SELECT b.id, ac.\"gebruikersnaam\", b.\"datum\", b.\"soort\", COUNT(ab.\"like\") AS \"likes\" FROM bijdrage b LEFT JOIN account_bijdrage ab ON b.id = ab.\"bijdrage_id\" JOIN account ac ON ac.id = b.\"account_id\" LEFT JOIN BIJDRAGE_BERICHT bb ON b.id = bb.\"bericht_id\" WHERE bb.\"bijdrage_id\" IS NULL GROUP BY b.id, ac.\"gebruikersnaam\", b.\"datum\", b.\"soort\" ORDER BY b.\"datum\" DESC, b.id");
 
             List<Dictionary<string, object>> contributions = new List<Dictionary<string, object>>();
             int length = 10;
@@ -60,6 +60,8 @@ namespace WebApplication1.DB
             return ret;
         }
 
+
+
         internal List<Message> getReaction(Contribution con)
         {
             List<Message> ret = new List<Message>();
@@ -71,6 +73,55 @@ namespace WebApplication1.DB
             }
 
             return ret;
+        }
+
+        internal List<Category> getCategories()
+        {
+            List<Category> ret = new List<Category>();
+            List<Dictionary<string, object>> categories = getQuery("SELECT \"bijdrage_id\", NVL(\"categorie_id\", -1) \"categorie_id\", \"naam\" FROM CATEGORIE c CONNECT BY c.\"categorie_id\" = prior c.\"bijdrage_id\" start with \"categorie_id\" IS NULL");
+
+            foreach (Dictionary<string, object> cat in categories)
+            {
+                ret.Add(new Category(new Contribution(Convert.ToInt32(cat["bijdrage_id"]), new DateTime(), 0, ""), (string)cat["naam"], null));
+            }
+
+            return ret;
+        }
+
+        internal void sendMessage(string title, string content, string account)
+        {
+            int bijdrage_id = getLatestId("bijdrage");
+            int account_id = Convert.ToInt32(getQuery("SELECT id FROM ACCOUNT WHERE \"gebruikersnaam\" = '"+account+"'")[0]["id"]);
+
+            if (!(doQuery("INSERT INTO BIJDRAGE VALUES(" + bijdrage_id + ", " + account_id + ", SYSDATE, \'bericht\')") > 0 && doQuery("INSERT INTO BERICHT VALUES(" + bijdrage_id + ", '" + title + "', '" + content + "')") > 0))
+            {
+                // Bericht is niet toegevoegd
+            }
+
+        }
+
+        internal void sendCategory(string naam, int parent, string account)
+        {
+            int bijdrage_id = getLatestId("bijdrage");
+            int account_id = Convert.ToInt32(getQuery("SELECT id FROM ACCOUNT WHERE \"gebruikersnaam\" = '" + account + "'")[0]["id"]);
+            string query = "INSERT INTO CATEGORIE VALUES(" + bijdrage_id + ", " + parent + ", '" + naam + "')";
+
+            if (parent == -1)
+                query = "INSERT INTO CATEGORIE VALUES(" + bijdrage_id + ", NULL, '" + naam + "')";
+
+            if (doQuery("INSERT INTO BIJDRAGE VALUES(" + bijdrage_id + ", " + account_id + ", SYSDATE, \'categorie\')") > 0)
+                if(doQuery(query) <= 0)
+                {
+                    doQuery("DELETE FROM BIJDRAGE WHERE ID="+bijdrage_id);
+                }
+        }
+
+        internal void addLike(int id, string account)
+        {
+            int ab_id = getLatestId("account_bijdrage");
+            int account_id = Convert.ToInt32(getQuery("SELECT id FROM ACCOUNT WHERE \"gebruikersnaam\" = '" + account + "'")[0]["id"]);
+
+            doQuery("INSERT INTO ACCOUNT_BIJDRAGE VALUES(" + ab_id + ", " + account_id + ", " + id + ", 1, 0)");
         }
     }
 }

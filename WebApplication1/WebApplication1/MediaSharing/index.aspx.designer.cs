@@ -67,6 +67,15 @@ namespace WebApplication1.Scherm {
         protected global::System.Web.UI.HtmlControls.HtmlInputSubmit sendMessage;
         
         /// <summary>
+        /// fileCat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect fileCat;
+        
+        /// <summary>
         /// filePath control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace WebApplication1.Scherm {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputSubmit sendFile;
+        
+        /// <summary>
+        /// parentCat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect parentCat;
         
         /// <summary>
         /// cat control.
