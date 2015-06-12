@@ -15,7 +15,7 @@ namespace WebApplication1.DB
             List<Dictionary<string, object>> AllEvents = getQuery("SELECT * FROM event");
             foreach (Dictionary<string, object> events in AllEvents)
             {
-                ret.Add(new Events(Convert.ToInt32(events["id"]), (string)events["naam"], (DateTime)events["datumStart"], (DateTime)events["datumEinde"], Convert.ToInt32(events["maxBezoekers"]), Convert.ToInt32(events["locatie_id"])));
+                ret.Add(new Events(Convert.ToInt32(events["id"]), (string)events["naam"], (DateTime)events["datumstart"], (DateTime)events["datumeinde"], Convert.ToInt32(events["maxbezoekers"]), Convert.ToInt32(events["locatie_id"])));
             }
 
             return ret;
@@ -27,7 +27,7 @@ namespace WebApplication1.DB
             List<Dictionary<string, object>> AllLocations = getQuery("SELECT * FROM locatie");
             foreach (Dictionary<string, object> locatie in AllLocations)
             {
-                ret.Add(new Locatie(Convert.ToInt32(locatie["id"]),(string)locatie["naam"], (string)locatie["straat"], (string)locatie["nr"], (string)locatie["postcode"], (string)locatie["plaats"]));
+                ret.Add(new Locatie(Convert.ToInt32(locatie["id"]),Convert.ToString(locatie["naam"]), Convert.ToString(locatie["straat"]), Convert.ToString(locatie["nr"]), Convert.ToString(locatie["postcode"]), Convert.ToString(locatie["plaats"])));
             }
 
             return ret;
@@ -48,8 +48,8 @@ namespace WebApplication1.DB
             try
             {
                 string query;
-                query = "INSERT INTO locatie(id, naam, straat, nr, postcode, plaats) VALUES(";
-                query += locatie.id + ", " + locatie.name + ", " + locatie.straat + ", " + locatie.nr + ", " + locatie.postcode + ", " + locatie.plaats + ")";
+                query = "INSERT INTO LOCATIE VALUES(";
+                query += locatie.id + ", '" + locatie.name + "', '" + locatie.straat + "', '" + locatie.nr + "', '" + locatie.postcode + "', '" + locatie.plaats + "')";
                 doQuery(query);
                 return true;
             }
@@ -63,8 +63,8 @@ namespace WebApplication1.DB
             try
             {
                 string query;
-                query = "INSERT INTO event(id, locatie_id, naam, datumstart, datumeind, maxbezoekers ) VALUES(";
-                query += events.id + ", " + events.locatie_id + ", "+ events.name +  ", " + events.dateStart + ", "+ events.dateEnd + ", " + events.maxCapacity  +")";
+                query = "INSERT INTO EVENT VALUES(";
+                query += events.id + ", '" + events.locatie_id + "', '"+ events.name +  "', '" + events.dateStart + "', '"+ events.dateEnd + "', '" + events.maxCapacity  +"')";
                 doQuery(query);
                 return true;
             }
@@ -78,8 +78,8 @@ namespace WebApplication1.DB
             try
             {
                 string query;
-                query = "INSERT INTO plek(id, id, locatie_id, nummer, capacity) VALUES(";
-                query += plek.id + ", " + plek.nummer + ", " + plek.capacity + ", " + plek.locatie_id + ")";
+                query = "INSERT INTO PLEK VALUES(";
+                query += plek.id + ", '" + plek.nummer + "', '" + plek.capacity + "', '" + plek.locatie_id + "')";
                 doQuery(query);
                 return true;
             }
@@ -88,11 +88,11 @@ namespace WebApplication1.DB
                 return false;
             }
         }
-        public bool AddSpecification(string spec,string waarde, int Plek_id )
+        public bool AddSpecification(string spec,string waarde, int plek_id )
         {
             try
             {
-                doQuery("INSERT INTO PLEK_SPECIFICATIE(ID, specificatie_id, plek_id, waarde)VALUES (" + getLatestId("plek_specificatie") + ", " + spec + ", " + Plek_id + "," + waarde + ")");
+                doQuery("INSERT INTO PLEK_SPECIFICATIE VALUES (" + getLatestId("plek_specificatie") + ", '" + spec + "', " + plek_id + ", '" + waarde + "')");
                 return true;
             }
             catch

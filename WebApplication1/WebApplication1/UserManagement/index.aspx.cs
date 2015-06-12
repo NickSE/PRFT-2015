@@ -9,8 +9,12 @@ using WebApplication1.DB;
 
 namespace WebApplication1.UserManagement
 {
+    
     public partial class index : System.Web.UI.Page
     {
+        string curItem;
+        string curValue;
+
         Database db = new Database();
         UMDatabase udb = new UMDatabase();
         protected void Page_Load(object sender, EventArgs e)
@@ -47,9 +51,17 @@ namespace WebApplication1.UserManagement
         }
         protected void btnRemoveUser_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(lbUser.SelectedValue);
-            udb.DeleteUser(id);
-            RefreshUserList();
+            //int id = Convert.ToInt32(lbUser.SelectedValue);
+
+            if (curValue != null)
+            {
+                udb.DeleteUser(Convert.ToInt32(curValue));
+
+                RefreshUserList();
+            }
+                
+            
+
         }
         private void RefreshUserList()
         {
@@ -58,6 +70,12 @@ namespace WebApplication1.UserManagement
             {
                 lbUser.Items.Add(new ListItem(user.ToString(), Convert.ToString(user.id)));
             }
+        }
+
+        protected void lbUser_TextChanged(object sender, EventArgs e)
+        {
+            curItem = lbUser.SelectedItem.Text;
+            curValue = lbUser.SelectedItem.Value;
         }
     }
 }

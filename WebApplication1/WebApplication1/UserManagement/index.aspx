@@ -72,7 +72,7 @@
                     <!-- ### Gebruiker Lijst ### -->
                     <div class="form-group">
                         <label for="lbUser">Gebruikers:</label>
-                        <asp:ListBox ID="lbUser" runat="server"></asp:ListBox>
+                        <asp:ListBox ID="lbUser" runat="server" OnTextChanged="lbUser_TextChanged"></asp:ListBox>
                         <asp:Button ID="btnRemoveUser" class="btn btn-default" runat="server" Text="Gebruiker Verwijderen" OnClick="btnRemoveUser_Click"></asp:Button>
                     </div>
                 </aside>
