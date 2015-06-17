@@ -19,5 +19,35 @@ namespace WebApplication1.DB
         {
 
         }
+
+        public bool GetCode(string code)
+        {
+            List<Dictionary<string, object>> data = getQuery("SELECT id FROM persoon WHERE polsbandje.barcode = '" + code + "'");//TODO Query
+
+            if (data.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public bool activateCode(int id, string barcode)
+        {
+            try
+            {
+                doQuery("INSERT INTO polsbandje VALUES('" + barcode + "')");//TODO goede query maken
+                doQuery("UPDATE gebruiker SET polsbandje = '" + barcode + "'  WHERE id = " + id);//TODO goede query maken
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
     }
 }

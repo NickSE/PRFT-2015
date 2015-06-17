@@ -16,6 +16,41 @@ namespace WebApplication1.Entrance
         protected void Page_Load(object sender, EventArgs e)
         {
             btnZoek.Click += btnZoek_Click;
+            btnLink.Click += btnLink_Click;
+        }
+
+        void btnLink_Click(object sender, EventArgs e)
+        {
+            if (tbBarcode.Text == "")
+            {
+                //barcode niet gevonden
+            }
+            else
+            {
+                try
+                {
+                    if (adb.GetCode(Convert.ToString(tbBarcode.Text)))
+                    {
+                        bool resultaat = adb.activateCode(Convert.ToInt32(tbID), tbBarcode.Text);
+                        if (resultaat)
+                        {
+                            //linken gelukt!
+                        }
+                        else
+                        {
+                            //linken niet gelukt :c
+                        }
+                    }
+                    else
+                    {
+                        //barcode is al gelinkt!
+                    }
+                }
+                catch
+                {
+                    //ongeldige data!
+                }
+            }
         }
 
         void btnZoek_Click(object sender, EventArgs e)
