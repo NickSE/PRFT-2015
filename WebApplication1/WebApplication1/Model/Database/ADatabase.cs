@@ -22,7 +22,7 @@ namespace WebApplication1.DB
 
         public bool GetCode(string code)
         {
-            List<Dictionary<string, object>> data = getQuery("SELECT id FROM persoon WHERE polsbandje.barcode = '" + code + "'");//TODO Query
+            List<Dictionary<string, object>> data = getQuery("SELECT p.id FROM persoon p inner join reservering r on p.id = r.\"persoon_id\" inner join reservering_polsbandje rp on r.id = rp.\"reservering_id\" inner join polsbandje pb on rp.\"polsbandje_id\" = pb.id where \"barcode\" =  '" + code + "'");
 
             if (data.Count == 0)
             {
@@ -39,8 +39,9 @@ namespace WebApplication1.DB
         {
             try
             {
-                doQuery("INSERT INTO polsbandje VALUES('" + barcode + "')");//TODO goede query maken
-                doQuery("UPDATE gebruiker SET polsbandje = '" + barcode + "'  WHERE id = " + id);//TODO goede query maken
+                string aanwezig = "1";
+                doQuery("INSERT INTO polsbandje VALUES('" + barcode + '"' + id + "'" + aanwezig + "'");//TODO goede query maken
+                doQuery("UPDATE polsbandje SET \"barcode\" = '" + barcode + "'  WHERE id = " + id);//TODO goede query maken
                 return true;
             }
             catch
