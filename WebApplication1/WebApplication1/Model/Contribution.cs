@@ -17,6 +17,8 @@ namespace WebApplication1.Model
 
         public Boolean Liked { get; set; }
 
+        public Boolean Reported { get; set; }
+
         public Contribution(Contribution con)
         {
             this.id = con.id;
@@ -24,15 +26,17 @@ namespace WebApplication1.Model
             this.Date = con.Date;
             this.Liked = con.Liked;
             this.Likes = con.Likes;
+            this.Reported = con.Reported;
         }
 
-        public Contribution(int id, DateTime date, int likes, string author, Boolean liked)
+        public Contribution(int id, DateTime date, int likes, string author, Boolean liked, Boolean reported)
         {
             this.id = id;
             this.Date = date;
             this.Likes = likes;
             this.Author = author;
             this.Liked = liked;
+            this.Reported = reported;
         }
     }
 }

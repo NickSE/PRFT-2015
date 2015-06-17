@@ -27,9 +27,11 @@
 	<div class="container">
 		<div class="col-xs-4">
 			<aside>
-				Categorieën				
-				<select id="categories" runat="server">
-				</select>
+                <div class="form-group">
+				    <label for="sorteer">Bekijk berichten</label>		
+				    <select id="categories" runat="server" class="form-control" onchange="getCategorie()">
+				    </select>
+                </div>
 			</aside>
 		</div>
 		<div class="col-xs-8">
@@ -96,42 +98,76 @@
         });
 
         function Like(id){
-            if (call(id, "Like"))
-            {
+            call(id, "Like")
                 $("#like_" + id).text("Unlike");
                 $("#like_" + id).attr("onclick", "Unlike(" + id + ");");
-                $("#contribution_" + id).find(".likes").children("b").text($("#contribution_" + id).find(".likes").children("b").text() + 1);
-            }
+                $("#contribution_" + id).find(".likes").children("b").text(parseInt($("#contribution_" + id).find(".likes").children("b").text()) + 1);
+                if ($("#report_" + id).attr("disabled") == "disabled") {
+                    $("#report_" + id).removeAttr("disabled");
+                    $("#report_" + id).attr("onclick", "Report(" + id + ");");
+                }
+            
         }
 
         function Unlike(id) {
-            if(call(id, "Unlike"))
-            {
+            call(id, "Unlike")
                 $("#like_" + id).text("Like");
                 $("#like_" + id).attr("onclick", "Like(" + id + ");");
                 $("#contribution_" + id).find(".likes").children("b").text($("#contribution_" + id).find(".likes").children("b").text() - 1);
-            }
+        }
+
+        function getCategorie() {
+            html = call($("#categories").val(), "Sort");
+            $("#article_list").html(html);
         }
 
         function Report(id) {
-            call(id, "Report");
+            call(id, "Report")
+            $("#report_" + id).removeAttr("onclick");
+                $("#report_" + id).attr("disabled", "disabled");
+                if ($("#like_" + id).text() == "Unlike") {
+                    $("#like_" + id).text("Like");
+                    $("#like_" + id).attr("onclick", "Like(" + id + ");");
+                    $("#contribution_" + id).find(".likes").children("b").text($("#contribution_" + id).find(".likes").children("b").text() - 1);
+                }
+        }
+
+        function openReact(id) {
+            $("#commentfield_" + id).toggleClass("hidden");
         }
 
         function React(id) {
-            call(id, "React");
+            var m = $("#comment_content_" + id).val();
+
+            $.ajax({
+                type: "POST",
+                url: "index.aspx/React",
+                async: false,
+                data: '{id: ' + id + ', message: "' + m + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    ret = response.d;
+                }
+            });
         }
 
         function call(id, method) {
-            return $.ajax({
+            var ret;
+
+            $.ajax({
                 type: "POST",
-                url: "index.aspx/"+method,
+                url: "index.aspx/" + method,
+                async: false,
                 data: '{id: ' + id + '}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    return response;
+                    ret = response.d;
                 }
             });
+
+            return ret;
         }
     </script>
 </body>
