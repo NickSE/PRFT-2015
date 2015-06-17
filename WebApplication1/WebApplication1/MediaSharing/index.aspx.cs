@@ -51,14 +51,15 @@ namespace WebApplication1.Scherm
             article_list.InnerHtml = "";
             string type;
             // Load messages
-            foreach (Contribution i in db.getContributions())
+            int account_id = db.getSessionId(Session["login"].ToString());
+            foreach (Contribution i in db.getContributions(account_id))
             {
                 if (i is Message) type = "message";
                 else if (i is UserFile) type = "file";
                 else type = "category";
 
                 // Start artikel
-                article_list.InnerHtml += "<article>" + "\n";
+                article_list.InnerHtml += "<article id=\"contribution_"+i.id+"\">" + "\n";
 
                 // Display author
                 article_list.InnerHtml += "<div class=\"author\">";
@@ -113,14 +114,17 @@ namespace WebApplication1.Scherm
 
                 // Geef artikel een Like, Reageer en report functie
                 article_list.InnerHtml += "<div class=\"do text-right\">";
-                article_list.InnerHtml += "<button ID=\"doLike\" class=\"btn btn-link\" onclick=\"Like(" + i.id + ")\">Like</button>";
-                article_list.InnerHtml += "<button ID=\"doReact\" class=\"btn btn-link\" onclick=\"openReact(" + i.id + ")\">Reageer</button>";
-                article_list.InnerHtml += "<button ID=\"doReport\" class=\"btn btn-link\" onclick=\"Report(" + i.id + ")\">Ongewenst</button>";
+                if(i.Liked)
+                    article_list.InnerHtml += "<button class=\"like btn btn-link\" id=\"like_" + i.id + "\" onclick=\"Unlike(" + i.id + ")\">Unlike</button>";
+                else
+                    article_list.InnerHtml += "<button class=\"like btn btn-link\" id=\"like_" + i.id + "\" onclick=\"Like(" + i.id + ")\">Like</button>";
+                article_list.InnerHtml += "<button class=\"react btn btn-link\" id=\"react_" + i.id + "\" onclick=\"openReact(" + i.id + ")\">Reageer</button>";
+                article_list.InnerHtml += "<button class=\"report btn btn-link\" id=\"report_" + i.id + "\" onclick=\"Report(" + i.id + ")\">Ongewenst</button>";
                 article_list.InnerHtml += "</div>" + "\n";
 
                 // Geef artikel aantal likes
-                article_list.InnerHtml += "<div class\"likes\">";
-                article_list.InnerHtml += "<span><b>" + i.Likes + "</b> like(s)</span>";
+                article_list.InnerHtml += "<div class=\"likes\">";
+                article_list.InnerHtml += "<b>" + i.Likes + "</b> like(s)";
                 article_list.InnerHtml += "</div>" + "\n";
 
                 // Laadt reacties
@@ -161,15 +165,20 @@ namespace WebApplication1.Scherm
         public static bool Like(int id)
         {
             MSDatabase db = new MSDatabase();
-            db.addLike(id, HttpContext.Current.Session["login"].ToString());
+            return db.doAction(id, HttpContext.Current.Session["login"].ToString(), "LIKE");
+        }
 
-            return true;
+        public static bool Unlike(int id)
+        {
+            MSDatabase db = new MSDatabase();
+            return db.doAction(id, HttpContext.Current.Session["login"].ToString(), "UNLIKE");
         }
 
         [System.Web.Services.WebMethod]
         public static bool Report(int id)
         {
-            return false;
+            MSDatabase db = new MSDatabase();
+            return db.doAction(id, HttpContext.Current.Session["login"].ToString(), "REPORT");
         }
 
         [System.Web.Services.WebMethod]

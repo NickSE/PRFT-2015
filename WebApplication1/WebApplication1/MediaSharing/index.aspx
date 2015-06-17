@@ -96,7 +96,21 @@
         });
 
         function Like(id){
-            call(id, "Like");
+            if (call(id, "Like"))
+            {
+                $("#like_" + id).text("Unlike");
+                $("#like_" + id).attr("onclick", "Unlike(" + id + ");");
+                $("#contribution_" + id).find(".likes").children("b").text($("#contribution_" + id).find(".likes").children("b").text() + 1);
+            }
+        }
+
+        function Unlike(id) {
+            if(call(id, "Unlike"))
+            {
+                $("#like_" + id).text("Like");
+                $("#like_" + id).attr("onclick", "Like(" + id + ");");
+                $("#contribution_" + id).find(".likes").children("b").text($("#contribution_" + id).find(".likes").children("b").text() - 1);
+            }
         }
 
         function Report(id) {
@@ -108,14 +122,14 @@
         }
 
         function call(id, method) {
-            $.ajax({
+            return $.ajax({
                 type: "POST",
                 url: "index.aspx/"+method,
                 data: '{id: ' + id + '}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert(response.d);
+                    return response;
                 }
             });
         }

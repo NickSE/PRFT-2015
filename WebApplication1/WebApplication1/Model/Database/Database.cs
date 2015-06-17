@@ -132,5 +132,10 @@ namespace WebApplication1.DB
                 return Convert.ToInt16(data[0]["id"]);
             return -1;
         }
+
+        public int getSessionId(string account)
+        {
+            return Convert.ToInt32(getQuery("SELECT id FROM ACCOUNT WHERE \"gebruikersnaam\" = '" + account + "'")[0]["id"]);
+        }
     }
 }

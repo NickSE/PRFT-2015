@@ -9,10 +9,10 @@ namespace WebApplication1.DB
     public class MSDatabase : Database
     {
 
-        internal List<Contribution> getContributions()
+        internal List<Contribution> getContributions(int account)
         {
             List<Contribution> ret = new List<Contribution>();
-            List<Dictionary<string, object>> all = getQuery("SELECT b.id, ac.\"gebruikersnaam\", b.\"datum\", b.\"soort\", COUNT(ab.\"like\") AS \"likes\" FROM bijdrage b LEFT JOIN account_bijdrage ab ON b.id = ab.\"bijdrage_id\" JOIN account ac ON ac.id = b.\"account_id\" LEFT JOIN BIJDRAGE_BERICHT bb ON b.id = bb.\"bericht_id\" WHERE bb.\"bijdrage_id\" IS NULL GROUP BY b.id, ac.\"gebruikersnaam\", b.\"datum\", b.\"soort\" ORDER BY b.\"datum\" DESC, b.id");
+            List<Dictionary<string, object>> all = getQuery("SELECT b.id, NVL(a.\"like\", 0) AS \"liked\", ac.\"gebruikersnaam\", b.\"datum\", b.\"soort\", COUNT(ab.\"like\") AS \"likes\" FROM bijdrage b LEFT JOIN account_bijdrage a ON b.id = a.\"bijdrage_id\" AND a.\"account_id\" = "+account+" LEFT JOIN account_bijdrage ab ON b.id = ab.\"bijdrage_id\" JOIN account ac ON ac.id = b.\"account_id\" LEFT JOIN BIJDRAGE_BERICHT bb ON b.id = bb.\"bericht_id\" WHERE bb.\"bijdrage_id\" IS NULL GROUP BY b.id, ac.\"gebruikersnaam\", NVL(a.\"like\", 0), b.\"datum\", b.\"soort\" ORDER BY b.\"datum\" DESC, b.id");
 
             List<Dictionary<string, object>> contributions = new List<Dictionary<string, object>>();
             int length = 10;
@@ -26,7 +26,7 @@ namespace WebApplication1.DB
 
             foreach (Dictionary<string, object> con in contributions)
             {
-                Contribution c = new Contribution(Convert.ToInt32(con["id"]), (DateTime)con["datum"], Convert.ToInt32(con["likes"]), (string)con["gebruikersnaam"]);
+                Contribution c = new Contribution(Convert.ToInt32(con["id"]), (DateTime)con["datum"], Convert.ToInt32(con["likes"]), (string)con["gebruikersnaam"], Convert.ToInt32(con["liked"]) == 1);
 
                 if ((string)con["soort"] == "categorie")
                 {
@@ -69,7 +69,7 @@ namespace WebApplication1.DB
 
             foreach (Dictionary<string, object> reaction in reactions)
             {
-                ret.Add(new Message(new Contribution(Convert.ToInt32(reaction["id"]), (DateTime)reaction["datum"], Convert.ToInt32(reaction["likes"]), (string)reaction["gebruikersnaam"]), (string)reaction["inhoud"], null, con));
+                ret.Add(new Message(new Contribution(Convert.ToInt32(reaction["id"]), (DateTime)reaction["datum"], Convert.ToInt32(reaction["likes"]), (string)reaction["gebruikersnaam"], false), (string)reaction["inhoud"], null, con));
             }
 
             return ret;
@@ -82,7 +82,7 @@ namespace WebApplication1.DB
 
             foreach (Dictionary<string, object> cat in categories)
             {
-                ret.Add(new Category(new Contribution(Convert.ToInt32(cat["bijdrage_id"]), new DateTime(), 0, ""), (string)cat["naam"], null));
+                ret.Add(new Category(new Contribution(Convert.ToInt32(cat["bijdrage_id"]), new DateTime(), 0, "", false), (string)cat["naam"], null));
             }
 
             return ret;
@@ -91,7 +91,7 @@ namespace WebApplication1.DB
         internal void sendMessage(string title, string content, string account)
         {
             int bijdrage_id = getLatestId("bijdrage");
-            int account_id = Convert.ToInt32(getQuery("SELECT id FROM ACCOUNT WHERE \"gebruikersnaam\" = '"+account+"'")[0]["id"]);
+            int account_id = getSessionId(account);
 
             if (!(doQuery("INSERT INTO BIJDRAGE VALUES(" + bijdrage_id + ", " + account_id + ", SYSDATE, \'bericht\')") > 0 && doQuery("INSERT INTO BERICHT VALUES(" + bijdrage_id + ", '" + title + "', '" + content + "')") > 0))
             {
@@ -103,7 +103,7 @@ namespace WebApplication1.DB
         internal void sendCategory(string naam, int parent, string account)
         {
             int bijdrage_id = getLatestId("bijdrage");
-            int account_id = Convert.ToInt32(getQuery("SELECT id FROM ACCOUNT WHERE \"gebruikersnaam\" = '" + account + "'")[0]["id"]);
+            int account_id = getSessionId(account);
             string query = "INSERT INTO CATEGORIE VALUES(" + bijdrage_id + ", " + parent + ", '" + naam + "')";
 
             if (parent == -1)
@@ -116,12 +116,12 @@ namespace WebApplication1.DB
                 }
         }
 
-        internal void addLike(int id, string account)
+        internal bool doAction(int id, string account, string action)
         {
-            int ab_id = getLatestId("account_bijdrage");
-            int account_id = Convert.ToInt32(getQuery("SELECT id FROM ACCOUNT WHERE \"gebruikersnaam\" = '" + account + "'")[0]["id"]);
-
-            doQuery("INSERT INTO ACCOUNT_BIJDRAGE VALUES(" + ab_id + ", " + account_id + ", " + id + ", 1, 0)");
+            int account_id = getSessionId(account);
+            return doQuery("BEGIN DOACTION(" + account_id + ", " + id + ", '" + action + "'); END;") > 0;
+            
         }
+
     }
 }
