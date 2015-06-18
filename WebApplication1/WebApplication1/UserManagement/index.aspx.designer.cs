@@ -40,6 +40,15 @@ namespace WebApplication1.UserManagement {
         protected global::System.Web.UI.WebControls.Button btnRemoveUser;
         
         /// <summary>
+        /// btnInfoUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnInfoUser;
+        
+        /// <summary>
         /// eventbeheer control.
         /// </summary>
         /// <remarks>

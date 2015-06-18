@@ -12,14 +12,15 @@ namespace WebApplication1.UserManagement
     
     public partial class index : System.Web.UI.Page
     {
-        string curItem;
-        string curValue;
-
         Database db = new Database();
         UMDatabase udb = new UMDatabase();
         protected void Page_Load(object sender, EventArgs e)
         {
-            RefreshUserList();
+            if (!IsPostBack)
+            {
+                RefreshUserList();
+                lbUser.DataBind();
+            }
         }
         protected void btnCreateUser_Click(object sender, EventArgs e)
         {
@@ -53,15 +54,25 @@ namespace WebApplication1.UserManagement
         {
             //int id = Convert.ToInt32(lbUser.SelectedValue);
 
-            if (curValue != null)
+            if (lbUser.SelectedItem.Value != null)
             {
-                udb.DeleteUser(Convert.ToInt32(curValue));
-
+                if(udb.DeleteUser(Convert.ToInt32(lbUser.SelectedItem.Value)))
+                {
+                    btnRemoveUser.Text = "Jobs done!";
+                }
                 RefreshUserList();
             }
                 
             
 
+        }
+        protected void btnInfoUser_Click(object sender, EventArgs e)
+        {
+            if (lbUser.SelectedItem.Value != null)
+            {
+                User selectedUser = udb.GetUser(Convert.ToInt32(lbUser.SelectedItem.Value));
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + selectedUser.name + " " + selectedUser.insertion + " " + selectedUser.lastname + " " + selectedUser.street + " " + selectedUser.number + " " + selectedUser.city + " " + selectedUser.banknr + "');", true);
+            }
         }
         private void RefreshUserList()
         {
@@ -70,12 +81,6 @@ namespace WebApplication1.UserManagement
             {
                 lbUser.Items.Add(new ListItem(user.ToString(), Convert.ToString(user.id)));
             }
-        }
-
-        protected void lbUser_TextChanged(object sender, EventArgs e)
-        {
-            curItem = lbUser.SelectedItem.Text;
-            curValue = lbUser.SelectedItem.Value;
         }
     }
 }
