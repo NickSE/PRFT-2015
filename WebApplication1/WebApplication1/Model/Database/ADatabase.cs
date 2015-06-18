@@ -34,14 +34,30 @@ namespace WebApplication1.DB
             }
         }
 
-
+        public bool getAllEntries()
+        {
+            try
+            {
+                doQuery("SELECT DISTINCT \"voornaam\", \"tussenvoegsel\", \"achternaam\" FROM persoon p left join reservering r on p.id = r.\"persoon_id\" left join reservering_polsbandje re on r.id = re.\"reservering_id\" where \"aanwezig\" = 1");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public bool activateCode(int id, string barcode)
         {
             try
             {
+                int id_pols = getLatestId("polsbandje");
+                string query;
                 string aanwezig = "1";
-                doQuery("INSERT INTO polsbandje VALUES('" + barcode + '"' + id + "'" + aanwezig + "'");//TODO goede query maken
-                doQuery("UPDATE polsbandje SET \"barcode\" = '" + barcode + "'  WHERE id = " + id);//TODO goede query maken
+                query = "INSERT INTO polsbandje VALUES(";
+                query += id_pols + ", '" + barcode + "', '" + aanwezig + "')";
+                //doQuery("INSERT INTO polsbandje VALUES('" + barcode + "', '" + id + "', '" + aanwezig +"')");//TODO goede query maken
+                //doQuery("UPDATE polsbandje SET \"barcode\" = '" + barcode + "'  WHERE id = " + id);//TODO goede query maken
+                doQuery(query);                
                 return true;
             }
             catch

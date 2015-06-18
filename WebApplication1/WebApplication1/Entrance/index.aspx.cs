@@ -16,7 +16,7 @@ namespace WebApplication1.Entrance
         protected void Page_Load(object sender, EventArgs e)
         {
             btnZoek.Click += btnZoek_Click;
-            btnLink.Click += btnLink_Click;
+            btnLink.Click += btnLink_Click;             
         }
 
         void btnLink_Click(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace WebApplication1.Entrance
                 {
                     if (adb.GetCode(Convert.ToString(tbBarcode.Text)))
                     {
-                        bool resultaat = adb.activateCode(Convert.ToInt32(tbID), tbBarcode.Text);
+                        bool resultaat = adb.activateCode(Convert.ToInt32(tbID.Text), tbBarcode.Text);
                         if (resultaat)
                         {
                             //linken gelukt!

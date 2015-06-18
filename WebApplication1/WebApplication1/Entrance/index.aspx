@@ -88,10 +88,13 @@
         </div>
         <div>
             <asp:Button ID="btnZoek" runat="server" Text="Zoek!" />
+        </div>        
+        <div>
+            <asp:Button ID="btnAanwezig" runat="server" Text="Aanwezigen" />
         </div>
         <div>
             <asp:Button ID="btnLink" runat="server" Text="Link!" />
-        </div>
+        </div>        
         <div id="Naam" runat="server">
             <!--<label for="pnlProfiel">Profiel</label>            
             <asp:Panel ID="pnlProfiel" runat="server">                                           
