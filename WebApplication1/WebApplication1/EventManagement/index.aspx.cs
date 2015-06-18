@@ -15,9 +15,14 @@ namespace WebApplication1.EventManagement
         EMDatabase edb = new EMDatabase();
         protected void Page_Load(object sender, EventArgs e)
         {
-            RefreshEvents();
-            RefreshLocaties();
-            Refreshplek();
+            if(!IsPostBack)
+            {
+                RefreshEvents();
+                RefreshLocaties();
+                Refreshplek();
+                RefreshAllDropdown();
+                Refreshspecification();
+            }
         }
 
         protected void btnCreateLocation_Click(object sender, EventArgs e)
@@ -33,7 +38,7 @@ namespace WebApplication1.EventManagement
                 Locatie newlocatie = new Locatie(db.getLatestId("locatie"), naam, straat, nr, postcode, plaats);
                 if (edb.AddLocation(newlocatie))
                 {
-                    refreshAllDropdown();
+                    RefreshAllDropdown();
                         RefreshLocaties();
                 }
                 else
@@ -52,15 +57,13 @@ namespace WebApplication1.EventManagement
         {
             try
             {
+                int location_id = Convert.ToInt32(dbLocationEvent.SelectedItem.Value);
                 string name = tbNameEvent.Text;
-                int max = Convert.ToInt32(tbMaxEvent.Text);
                 DateTime start = dtpDateStartEvent.SelectedDate;
                 DateTime end = dtpDateEndEvent.SelectedDate;
-                int id = Convert.ToInt32(dbLocationEvent.SelectedValue);
-             
+                int max = Convert.ToInt32(tbMaxEvent.Text);
 
-
-                Events newEvent = new Events(db.getLatestId("event"), name, start, end, max, id);
+                Events newEvent = new Events(db.getLatestId("event"), name, start, end, max, location_id);
                 if(edb.AddEvent(newEvent))
                 {
                     RefreshEvents();
@@ -121,7 +124,7 @@ namespace WebApplication1.EventManagement
             int id = Convert.ToInt32(lbLocation.SelectedValue);
             edb.deleteLocation(id);
             RefreshLocaties();
-            refreshAllDropdown();
+            RefreshAllDropdown();
             
         }
 
@@ -164,12 +167,20 @@ namespace WebApplication1.EventManagement
             lbPlek.Items.Clear();
             foreach (Plek plek in (edb.GetAllPleks()))
             {
-               // lbEvent.Items.Add(plek.ToString());
+                // lbEvent.Items.Add(plek.ToString());
                 lbPlek.Items.Add(new ListItem(plek.ToString(), Convert.ToString(plek.id)));
-                
+
             }
         }
-        private void refreshAllDropdown()
+        private void Refreshspecification()
+        {
+            lbSpecificationPlek.Items.Clear();
+            foreach (Dictionary<string, object> spec in (edb.GetAllSpecs()))
+            {
+                dbSpecificationPlek.Items.Add(new ListItem(Convert.ToString(spec["naam"]), Convert.ToString(spec["id"])));
+            }
+        }
+        private void RefreshAllDropdown()
         {
             dbLocationEvent.Items.Clear();
             dbLocationPlek.Items.Clear();

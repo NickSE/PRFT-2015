@@ -12,13 +12,24 @@ namespace WebApplication1.DB
         public List<User> GetAllUsers()
         {
             List<User> ret = new List<User>();
-            List<Dictionary<string, object>> AllUsers = getQuery("SELECT * FROM persoon");
+            List<Dictionary<string, object>> AllUsers = getQuery("SELECT * FROM persoon ORDER BY id");
             foreach (Dictionary<string, object> user in AllUsers)
             {
                 ret.Add(new User(Convert.ToInt32(user["id"]), Convert.ToString(user["voornaam"]), Convert.ToString(user["tussenvoegsel"]), Convert.ToString(user["achternaam"]), Convert.ToString(user["straat"]), Convert.ToString(user["huisnr"]), Convert.ToString(user["woonplaats"]), Convert.ToString(user["banknr"])));
             }
 
             return ret;
+        }
+        public User GetUser(int id)
+        {
+            List<Dictionary<string, object>> AllUsers = getQuery("SELECT * FROM persoon WHERE id = " + id + " ORDER BY id");
+            foreach (Dictionary<string, object> user in AllUsers)
+            {
+                User ret = new User(Convert.ToInt32(user["id"]), Convert.ToString(user["voornaam"]), Convert.ToString(user["tussenvoegsel"]), Convert.ToString(user["achternaam"]), Convert.ToString(user["straat"]), Convert.ToString(user["huisnr"]), Convert.ToString(user["woonplaats"]), Convert.ToString(user["banknr"]));
+                return ret;
+            }
+
+            return null;
         }
         public bool AddUser(User user)
         {
