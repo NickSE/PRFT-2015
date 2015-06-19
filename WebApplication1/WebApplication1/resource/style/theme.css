@@ -29,6 +29,7 @@ nav li {
 	display: inline-block;
 	color: #eee;
 	text-shadow: 1px 0 #444, -1px 0 #444, 0 1px #444, 0 -1px #444;
+    height: 100%;
 }
 		
 main, aside {
@@ -37,6 +38,8 @@ main, aside {
 	box-shadow: 0 0 3px #8888BB;
 	padding: 3px 8px;
 	color: #555;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #article_list article {
@@ -48,6 +51,12 @@ article div.category, article div.file {
     text-align: center;
 }
 /*Opmaak Myron*/
+/*NAVIGATIE*/
+nav ul li a{
+    color: #eee;
+    line-height: 40px;
+}
+/*FORM LAYOUT*/
 main:not(#media) label{
     line-height: 25px;
     width: 100px;
