@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Entrance</title>
+    <title>Rent</title>
     <meta charset="UTF-8" />
     <!-- dit doen we even niet <meta http-equiv="refresh" content="2"/>-->
 

@@ -117,7 +117,23 @@ namespace WebApplication1.DB
             {
                 ret.Add(new Category(new Contribution(Convert.ToInt32(cat["id"])), (string)cat["serie"]));
             }
+            if (ret.Count == 0)
+            {
+                return null;
+            }
             return ret;
+        }
+
+        public List<Dictionary<string, object>> huurItem (string item)
+        {
+            List<Dictionary<string, object>> data = getQuery("select \"merk\", \"serie\", \"prijs\" from product where \"serie\" = '" + item + "'");
+            return data;
+        }
+
+        public List<Dictionary<string, object>> huurItemBarcode(string barcode)
+        {
+            List<Dictionary<string, object>> data = getQuery("select distinct \"merk\", \"serie\", \"prijs\" from product p left join productexemplaar pro on p.ID = pro.\"product_id\" where \"barcode\" = '" + barcode + "'");
+            return data;
         }
    
     }

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using WebApplication1.DB;
 using WebApplication1.Model;
 
+
 namespace WebApplication1.Rent
 {
     public partial class index : System.Web.UI.Page
@@ -17,6 +18,29 @@ namespace WebApplication1.Rent
             loadCategories();            
             lbHuur.SelectedIndexChanged += lbHuur_SelectedIndexChanged;
             btnZoek.Click += btnZoek_Click;
+            btnHuur.Click += btnHuur_Click;
+        }
+
+        void btnHuur_Click(object sender, EventArgs e)
+        {
+            if (tbBarcode.Text == "")
+            {
+                List<Dictionary<string, object>> data = adb.huurItem(lbHuur.SelectedValue);
+                Dictionary<string, object> cur = data[0];
+                string item = (string)cur["serie"];
+                string merk = (string)cur["merk"];
+                string prijs = Convert.ToString(cur["prijs"]) + " euro";
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Weet u zeker dat u het product: " + item + " van het merk: " + merk + " wilt huren voor: " + prijs + "?')", true);
+            }
+            else if (tbBarcode.Text != "")
+            {
+                List<Dictionary<string, object>> dataHuur = adb.huurItemBarcode(tbBarcode.Text);
+                Dictionary<string, object> curr = dataHuur[0];
+                string itemB = (string)curr["serie"];
+                string merkB = (string)curr["merk"];
+                string prijsB = Convert.ToString(curr["prijs"]) + " euro";
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Weet u zeker dat u het product: " + itemB + " van het merk: " + merkB + " wilt huren voor: " + prijsB + "?')", true);
+            }
         }
 
         void lbHuur_SelectedIndexChanged(object sender, EventArgs e)
@@ -29,6 +53,10 @@ namespace WebApplication1.Rent
                 {
                     lbHuur.Items.Add(new ListItem(c.Name));
                 }
+            }
+            else
+            {
+                //do nothing
             }
              
         }
