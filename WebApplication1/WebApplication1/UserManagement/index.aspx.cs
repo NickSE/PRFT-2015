@@ -34,9 +34,15 @@ namespace WebApplication1.UserManagement
                 string city = tbCityUser.Text;
                 string banknr = tbBanknrUser.Text;
                 string email = tbEmailUser.Text;
-                User newUser = new User(db.getLatestId("persoon"), name, insertion, lastname, street, number, city, banknr, email);
 
-                if (udb.AddUser(newUser))
+                DateTime startdate = startdateRes.SelectedDate;
+                DateTime enddate = enddateRes.SelectedDate;
+                bool payed = cbPayedRes.Checked;
+
+                int id = db.getLatestId("persoon");
+                User newUser = new User(id, name, insertion, lastname, street, number, city, banknr, email);
+                Reservation newReservation = new Reservation(db.getLatestId("reservering"), id, startdate, enddate, payed);
+                if (udb.AddUser(newUser) && udb.AddRes(newReservation))
                 {
                     //feedback
                     RefreshUserList();

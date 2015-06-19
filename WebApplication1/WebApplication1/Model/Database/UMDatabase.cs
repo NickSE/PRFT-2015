@@ -59,5 +59,20 @@ namespace WebApplication1.DB
             }
 
         }
+        public bool AddRes(Reservation reservation)
+        {
+            try
+            {
+                string query;
+                query = "INSERT INTO RESERVATIE VALUES(";
+                //query += reservation.id + ", '" + user.name + "', '" + user.insertion + "', '" + user.lastname + "', '" + user.street + "', '" + user.number + "', '" + user.city + "', '" + user.banknr + "', '" + user.email + "')";
+                doQuery(query);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

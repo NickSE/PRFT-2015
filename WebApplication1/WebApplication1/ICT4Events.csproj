@@ -131,6 +131,7 @@
     <Compile Include="UserManagement\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserManagement\Reservation.cs" />
     <Compile Include="UserManagement\User.cs" />
   </ItemGroup>
   <ItemGroup>

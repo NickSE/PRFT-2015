@@ -47,46 +47,46 @@ main, aside {
 article div.category, article div.file {
     text-align: center;
 }
-/*LAYOUT BY MYRON*/
-main label{
+
+main:not(#media) label{
     line-height: 25px;
     width: 100px;
     margin: 5px 10px 2px 10px;
     text-align: right;
 }
-main input{
+main:not(#media) input {
     margin: 0px 0px 5px 0px;
     width: 200px;
 }
-main select{
+main select {
     height: 25px;
     width: 200px;
 }
-main table{
+main table {
     display: inline-block;
     width: 200px;
 }
-main .btn{
+main:not(#media) .btn {
     margin: 5px 10px 5px 10px;
     display: block;
 }
-main h1{
+main h1 {
     margin-left: 10px;
 }
-aside label{
+aside label {
     line-height: 25px;
     width: 100%;
     margin: 5px 0px;
 }
-aside input{
+aside input {
     margin: 5px 0px;
     width: 100%;
 }
-aside .btn{
+aside .btn {
     margin: 5px 0px;
     width: 100%;
 }
-aside select{
+aside select {
     width: 100%;
 }
 /*SMALL SCREEN RESOLUTION CODE*/
