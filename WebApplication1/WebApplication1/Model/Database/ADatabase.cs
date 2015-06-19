@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebApplication1.Model;
 
 namespace WebApplication1.DB
 {
@@ -10,7 +11,7 @@ namespace WebApplication1.DB
     {
         public List<Dictionary<string, object>> getAccount(int account_id)
         {
-            List<Dictionary<string, object>> data = getQuery("SELECT \"voornaam\", NVL(\"tussenvoegsel\", ' ') tussenvoegsel, \"achternaam\", \"straat\", \"huisnr\", \"woonplaats\", NVL(\"betaald\", 0) betaald FROM persoon p LEFT JOIN reservering r on p.ID = r.\"persoon_id\" WHERE p.ID=" + account_id);
+            List<Dictionary<string, object>> data = getQuery("SELECT \"voornaam\", NVL(\"tussenvoegsel\", ' ') tussenvoegsel, \"achternaam\", \"straat\", \"huisnr\", \"woonplaats\", NVL(\"betaald\", 0) betaald, \"email\" FROM persoon p LEFT JOIN reservering r on p.ID = r.\"persoon_id\" WHERE p.ID=" + account_id);
 
             return data;
         }
@@ -66,5 +67,58 @@ namespace WebApplication1.DB
             }
 
         }
+
+        public bool deActivateCode(string barcode)
+        {
+            try
+            {
+                doQuery("update polsbandje set \"actief\" = '0' where \"barcode\" = '" + barcode + "'");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool createAccount(string gebruikersnaam, string email, string activatiehash)
+        {
+            try
+            {
+                string query;
+                int id = getLatestId("account");
+                query = "INSERT INTO account VALUES(";
+                query += id + ", '" + gebruikersnaam + "', '" + email + "', '" + activatiehash + "', '" + 1 + "')";
+                doQuery(query);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public List<Category> getCategories()
+        {
+            List<Category> ret = new List<Category>();
+            List<Dictionary<string, object>> categories = getQuery("select id, \"naam\" from productcat");
+            foreach (Dictionary<string, object> cat in categories)
+            {
+                ret.Add(new Category(new Contribution(Convert.ToInt32(cat["id"])), (string)cat["naam"]));
+            }
+            return ret;
+        }
+
+        public List<Category> getSubCategories(string categorie)
+        {
+            List<Category> ret = new List<Category>();
+            List<Dictionary<string, object>> categories = getQuery("select p.id, p.\"productcat_id\", p.\"merk\", p.\"serie\", p.\"typenummer\", p.\"prijs\", pro.\"naam\" from product p left join productcat pro on p.\"productcat_id\" = pro.ID where \"naam\" ='" + categorie + "'");
+            foreach (Dictionary<string, object> cat in categories)
+            {
+                ret.Add(new Category(new Contribution(Convert.ToInt32(cat["id"])), (string)cat["serie"]));
+            }
+            return ret;
+        }
+   
     }
 }

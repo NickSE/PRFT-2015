@@ -38,5 +38,11 @@ namespace WebApplication1.Model
             this.Liked = liked;
             this.Reported = reported;
         }
+
+        public Contribution(int id)
+        {
+            this.id = id;
+        }
+        
     }
 }
