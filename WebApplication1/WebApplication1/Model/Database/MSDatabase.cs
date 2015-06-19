@@ -87,7 +87,7 @@ namespace WebApplication1.DB
 
             foreach (Dictionary<string, object> reaction in reactions)
             {
-                ret.Add(new Message(new Contribution(Convert.ToInt32(reaction["id"]), (DateTime)reaction["datum"], Convert.ToInt32(reaction["likes"]), (string)reaction["gebruikersnaam"], false, false), (string)reaction["inhoud"], null, con));
+                ret.Add(new Message(new Contribution(Convert.ToInt32(reaction["id"]), (DateTime)reaction["datum"], 0, (string)reaction["gebruikersnaam"], false, false), (string)reaction["inhoud"], null, con));
             }
 
             return ret;

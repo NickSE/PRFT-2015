@@ -82,7 +82,7 @@ namespace WebApplication1.Scherm
                             case "jpg":
                             case "png":
                             case "gif":
-                                article_list.InnerHtml += "<img src=\"" + ((UserFile)i).Path + "\" class=\"img-responsive\"/>";
+                                article_list.InnerHtml += "<img src=\"" + ((UserFile)i).Path + "\" class=\"img-responsive  center-block\"/>";
                                 break;
                             case "mp3":
                             case "ogg":
@@ -132,10 +132,10 @@ namespace WebApplication1.Scherm
 
                 // Laadt reacties
                 article_list.InnerHtml += "<div id=\"commentfield_" + i.id + "\" class=\"hidden\">";
-                    article_list.InnerHtml += "<div id=\"comments\">";
+                    article_list.InnerHtml += "<div class=\"comments\">";
                     foreach (Message j in db.getReaction(i))
                     {
-                        article_list.InnerHtml += "<div id=\"comment_" + j.id + "\">";
+                        article_list.InnerHtml += "<div class=\"comment\">";
                         article_list.InnerHtml += "<div class=\"author\">" + j.Author + "</div>";
                         article_list.InnerHtml += "<div class=\"content\">" + j.Content + "</div>";
                         article_list.InnerHtml += "<div class=\"time\">" + j.Date + "</div>";
@@ -252,7 +252,7 @@ namespace WebApplication1.Scherm
                             case "jpg":
                             case "png":
                             case "gif":
-                                html += "<img src=\"" + ((UserFile)i).Path + "\" class=\"img-responsive\"/>";
+                                html += "<img src=\"" + ((UserFile)i).Path + "\" class=\"img-responsive center-block\"/>";
                                 break;
                             case "mp3":
                             case "ogg":
@@ -298,7 +298,26 @@ namespace WebApplication1.Scherm
                 html += "</div>" + "\n";
 
                 // Laadt reacties
-                // ...
+                html += "<div id=\"commentfield_" + i.id + "\" class=\"hidden\">";
+                html += "<div class=\"comments\">";
+                foreach (Message j in db.getReaction(i))
+                {
+                    html += "<div class=\"comment\">";
+                    html += "<div class=\"author\">" + j.Author + "</div>";
+                    html += "<div class=\"content\">" + j.Content + "</div>";
+                    html += "<div class=\"time\">" + j.Date + "</div>";
+                    html += "</div>";
+                }
+                html += "</div>";
+                // Reageer
+                html += "<div id=\"commenting_" + i.id + "\">";
+                html += "<div class=\"form-group\">";
+                html += "<label for=\"react\"> Reageer </label>";
+                html += "<input type=\"text\" name=\"react\" id=\"comment_content_" + i.id + "\" class=\"form-control\" />";
+                html += "</div>";
+                html += "<input class=\"btn btn-primary btn-lg btn-block\" type=\"submit\" value=\"Verstuur\" onclick=\"React(" + i.id + ")\" />";
+                html += "</div>";
+                html += "</div>";
 
                 // Sluit artikel
                 html += "</article>" + "\n";

@@ -47,3 +47,27 @@ main, aside {
 article div.category, article div.file {
     text-align: center;
 }
+
+/* Commentaar */
+.comment {
+    margin: 10px 0 5px;
+    padding: 5px;
+    background-color: #fefefe;
+    border-bottom: 1px dotted #ccc;
+}
+
+.comment .author {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.comment .time {
+    text-align: right;
+    color: #888;
+    font-size: 10px;
+}
+
+.comments {
+    max-height: 170px;
+    overflow: auto;
+}
