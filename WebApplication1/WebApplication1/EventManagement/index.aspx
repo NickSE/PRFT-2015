@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="../StyleSheet.css" />
+    <link rel="stylesheet" href="../resource/style/theme.css" />
 </head>
 <body>
     <form id="EventManagement" runat="server">
@@ -83,7 +83,7 @@
                         <label for="tbNrPlek">Nr:</label><asp:TextBox ID="tbNrPlek" runat="server"></asp:TextBox>
                         <label for="tbCapacityPlek">Capaciteit:</label><asp:TextBox ID="tbCapacityPlek" runat="server"></asp:TextBox>
 
-                        <asp:ListBox ID="lbSpecificationPlek" runat="server"></asp:ListBox>
+                        <label for="lbSpecificationPlek">Specificaties:</label><asp:ListBox ID="lbSpecificationPlek" runat="server"></asp:ListBox>
                         <asp:Button ID="btnRemoveSpecificationPlek" class="btn btn-default" runat="server" Text="Specificatie Verwijderen" OnClick="btnRemoveSpecificationPlek_Click"></asp:Button>
 
                         <label for="dbSpecificationPlek">Specificatie:</label><asp:DropDownList ID="dbSpecificationPlek" runat="server"></asp:DropDownList>
