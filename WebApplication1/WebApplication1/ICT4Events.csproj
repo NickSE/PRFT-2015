@@ -65,6 +65,7 @@
     <Content Include="Entrance\index.aspx" />
     <Content Include="EventManagement\index.aspx" />
     <Content Include="MediaSharing\index.aspx" />
+    <Content Include="Rent\index.aspx" />
     <Content Include="resource\style\theme.css" />
     <Content Include="StyleSheet.css" />
     <Content Include="UserManagement\index.aspx" />
@@ -114,6 +115,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Rent\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rent\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserManagement\index.aspx.cs">

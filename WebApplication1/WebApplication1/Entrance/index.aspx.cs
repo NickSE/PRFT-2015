@@ -16,7 +16,7 @@ namespace WebApplication1.Entrance
         protected void Page_Load(object sender, EventArgs e)
         {
             btnZoek.Click += btnZoek_Click;
-            btnLink.Click += btnLink_Click;             
+            btnLink.Click += btnLink_Click;    
         }
 
         void btnLink_Click(object sender, EventArgs e)
@@ -29,6 +29,19 @@ namespace WebApplication1.Entrance
             {
                 try
                 {
+                    int ID = Convert.ToInt32(tbID.Text);
+                    List<Dictionary<string, object>> data = adb.getAccount(ID);
+                    Dictionary<string, object> cur = data[0];
+                    string naam = (string)cur["voornaam"] + (string)cur["achternaam"];
+                    string email = (string)cur["email"];
+                    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                    var random = new Random();
+                    var result = new string(
+                                 Enumerable.Repeat(chars, 8)
+                                 .Select(s => s[random.Next(s.Length)])
+                                 .ToArray());
+                    string actievatiehash = (string)result;
+                    adb.createAccount(naam, email, actievatiehash);
                     if (adb.GetCode(Convert.ToString(tbBarcode.Text)))
                     {
                         bool resultaat = adb.activateCode(Convert.ToInt32(tbID.Text), tbBarcode.Text);
@@ -43,7 +56,8 @@ namespace WebApplication1.Entrance
                     }
                     else
                     {
-                        //barcode is al gelinkt!
+                        //barcode is al gelinkt! (Deactiveren)
+                        adb.deActivateCode(tbBarcode.Text);
                     }
                 }
                 catch
