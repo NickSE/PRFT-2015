@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>GebruikerBeheer</title>
+    <title>Gebruiker</title>
     <meta charset="UTF-8" />
     <!-- dit doen we even niet <meta http-equiv="refresh" content="2"/>-->
 
@@ -20,8 +20,10 @@
             <div class="col-xs-5">
                 <nav>
                     <ul>
-                        <li>Profile</li>
-                        <li>Logout</li>
+                        <li><a href="../EventManagement/">Evenement</a></li>
+                        <li><a href="../UserManagement/">Gebruiker</a></li>
+                        <li><a href="../Entrance/">Toegang</a></li>
+                        <li><a href="../Rent/">Verhuur</a></li>
                     </ul>
                 </nav>
             </div>
