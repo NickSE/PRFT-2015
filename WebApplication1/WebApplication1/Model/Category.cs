@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebApplication1.Model
 {
-    class Category : Contribution
+    public class Category : Contribution
     {
         public string Name { get; set; }
         public Category Parent { get; set; }
@@ -14,6 +14,11 @@ namespace WebApplication1.Model
         {
             this.Name = name;
             this.Parent = parent;
+        }
+
+        public Category (Contribution con, string name) : base(con)
+        {
+            this.Name = name;
         }
     }
 }
