@@ -64,8 +64,21 @@ namespace WebApplication1.DB
             try
             {
                 string query;
-                query = "INSERT INTO RESERVATIE VALUES(";
-                //query += reservation.id + ", '" + user.name + "', '" + user.insertion + "', '" + user.lastname + "', '" + user.street + "', '" + user.number + "', '" + user.city + "', '" + user.banknr + "', '" + user.email + "')";
+                query = "INSERT INTO RESERVERING VALUES(" + reservation.id + ", '" + reservation.user_id + "', to_date('" + reservation.startdate.ToString("MM-dd-yyyy hh:mm") + "','MM-DD-YYYY hh24:MI'), to_date('" + reservation.enddate.ToString("MM-dd-yyyy hh:mm") + "','MM-DD-YYYY hh24:MI'),'" + reservation.payed + "')";
+                doQuery(query);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool AddAccount(Account account)
+        {
+            try
+            {
+                string query;
+                query = "INSERT INTO ACCOUNT VALUES(" + account.id + ", '" + account.username + "', '" + account.email + "', '" + account.activatiehash + "', '" + account.active + "')";
                 doQuery(query);
                 return true;
             }

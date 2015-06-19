@@ -11,9 +11,9 @@ namespace WebApplication1.UserManagement
         public int user_id { get; set; }
         public DateTime startdate { get; set; }
         public DateTime enddate { get; set; }
-        public bool payed { get; set; }
+        public string payed { get; set; }
 
-        public Reservation(int id, int user_id, DateTime startdate, DateTime enddate, bool payed)
+        public Reservation(int id, int user_id, DateTime startdate, DateTime enddate, string payed)
         {
             this.id = id;
             this.user_id = id;
