@@ -137,6 +137,13 @@
   <ItemGroup>
     <Content Include="MediaSharing\Web.config" />
     <Content Include="EventManagement\Web.config" />
+    <Content Include="Entrance\Web.config" />
+    <None Include="Entrance\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Entrance\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="EventManagement\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,6 +157,13 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="UserManagement\Web.config" />
+    <Content Include="Rent\Web.config" />
+    <None Include="Rent\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Rent\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="UserManagement\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

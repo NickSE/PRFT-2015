@@ -49,6 +49,15 @@ namespace WebApplication1.Entrance {
         protected global::System.Web.UI.WebControls.Button btnZoek;
         
         /// <summary>
+        /// btnLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLink;
+        
+        /// <summary>
         /// btnAanwezig control.
         /// </summary>
         /// <remarks>
@@ -58,13 +67,13 @@ namespace WebApplication1.Entrance {
         protected global::System.Web.UI.WebControls.Button btnAanwezig;
         
         /// <summary>
-        /// btnLink control.
+        /// eventbeheer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLink;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl eventbeheer;
         
         /// <summary>
         /// Naam control.
@@ -101,5 +110,14 @@ namespace WebApplication1.Entrance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Betaald;
+        
+        /// <summary>
+        /// lbPresent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbPresent;
     }
 }
