@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="../resource/style/theme.css" />
 </head>
 <body>
-    <form id="Entrance" runat="server">
-    <div>        
+    <form id="Entrance" runat="server">       
         <header class="col-xs-12 container">
             <div class="col-xs-3">LOGO </div>
             <div class="col-xs-5">
@@ -26,30 +25,35 @@
                 </nav>
             </div>
         </header>
-    </div>
-        <div>
-            <label for="tbID">ID:</label><asp:TextBox ID="tbID" runat="server"></asp:TextBox>
-        </div>
-        <div>
-            <label for="tbBarcode">Barcode:</label><asp:TextBox ID="tbBarcode" runat="server"></asp:TextBox>
-        </div>
-        <div>
-            <asp:Button ID="btnZoek" runat="server" Text="Zoek!" />
-        </div>        
-        <div>
-            <asp:Button ID="btnAanwezig" runat="server" Text="Aanwezigen" />
-        </div>
-        <div>
-            <asp:Button ID="btnLink" runat="server" Text="Link!" />
-        </div>        
-        <div id="Naam" runat="server">
-            <!--<label for="pnlProfiel">Profiel</label>            
-            <asp:Panel ID="pnlProfiel" runat="server">                                           
-            </asp:Panel>!-->
-        </div>
-        <div id="Adres" runat="server">
-        </div>
-        <div id="Betaald" runat="server">
+        <div class="container">
+            <div class="col-xs-4">
+                <aside>
+                    <!-- ### Zoeken en linken en lijstopvragen ### -->
+                    <label for="tbID">ID:</label><asp:TextBox ID="tbID" runat="server"></asp:TextBox>
+                    <label for="tbBarcode">Barcode:</label><asp:TextBox ID="tbBarcode" runat="server"></asp:TextBox>
+                    <asp:Button ID="btnZoek" runat="server" Text="Zoek!" />
+                    <asp:Button ID="btnLink" runat="server" Text="Link!" />
+                    <asp:Button ID="btnAanwezig" runat="server" Text="Aanwezigen" OnClick="btnAanwezig_Click" />
+                </aside>
+            </div>
+            <div class="col-xs-8">
+                <main id="eventbeheer" runat="server">
+                    <!-- ### Locatie aanmaken ### -->
+                    <div class="form-group">
+                        <h1>Account informatie</h1>
+                        <div id="Naam" runat="server">
+                        <!--<label for="pnlProfiel">Profiel</label>            
+                        <asp:Panel ID="pnlProfiel" runat="server">                                           
+                        </asp:Panel>!-->
+                        </div>
+                        <div id="Adres" runat="server"></div>
+                        <div id="Betaald" runat="server"></div>
+                    </div>
+                    <hr />
+                    <label for="lbPresent">Presentielijst</label>
+                    <asp:ListBox ID="lbPresent" runat="server"></asp:ListBox>
+			    </main>
+            </div>
         </div>        
     </form>
 </body>

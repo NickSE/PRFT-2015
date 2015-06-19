@@ -97,5 +97,10 @@ namespace WebApplication1.Entrance
             profiel.InnerHtml += "</asp:Panel>";
             profiel.InnerHtml += "</div>" + "\n";*/
         }
+
+        protected void btnAanwezig_Click(object sender, EventArgs e)
+        {
+            adb.getAllEntries();/*Aanwezige ophalen en in de listbox zetten lbPresent*/
+        }
     }
 }
