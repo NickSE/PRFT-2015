@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="../StyleSheet.css" />
+    <link rel="stylesheet" href="../resource/style/theme.css" />
 </head>
 <body>
     <form id="EventManagement" runat="server">
@@ -50,6 +50,7 @@
                         <label for="tbNumberUser">Huisnummer:</label><asp:TextBox ID="tbNumberUser" runat="server"></asp:TextBox>
                         <label for="tbCityUser">Woonplaats:</label><asp:TextBox ID="tbCityUser" runat="server"></asp:TextBox>
                         <label for="tbBanknrUser">Banknummer:</label><asp:TextBox ID="tbBanknrUser" runat="server"></asp:TextBox>
+                        <label for="tbEmailUser">Email:</label><asp:TextBox ID="tbEmailUser" runat="server"></asp:TextBox>
 
                         <asp:Button ID="btnCreateUser" class="btn btn-default" runat="server" Text="Gebruiker Aanmaken" OnClick="btnCreateUser_Click"></asp:Button>
                     </div>
