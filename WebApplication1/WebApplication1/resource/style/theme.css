@@ -67,6 +67,7 @@ main:not(#media) label{
 main:not(#media) input {
     margin: 0px 0px 5px 0px;
     width: 200px;
+    vertical-align: top;
 }
 main select {
     height: 25px;
