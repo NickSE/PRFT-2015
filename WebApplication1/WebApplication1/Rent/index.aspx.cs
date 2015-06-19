@@ -14,7 +14,8 @@ namespace WebApplication1.Rent
     {
         ADatabase adb = new ADatabase();
         protected void Page_Load(object sender, EventArgs e)
-        {            
+        {   
+            //laad catagorieën
             loadCategories();            
             lbHuur.SelectedIndexChanged += lbHuur_SelectedIndexChanged;
             btnZoek.Click += btnZoek_Click;
@@ -23,6 +24,7 @@ namespace WebApplication1.Rent
 
         void btnHuur_Click(object sender, EventArgs e)
         {
+            //als er geen barcode is ingevuld (dus via listbox)
             if (tbBarcode.Text == "")
             {
                 List<Dictionary<string, object>> data = adb.huurItem(lbHuur.SelectedValue);
@@ -32,6 +34,7 @@ namespace WebApplication1.Rent
                 string prijs = Convert.ToString(cur["prijs"]) + " euro";
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Weet u zeker dat u het product: " + item + " van het merk: " + merk + " wilt huren voor: " + prijs + "?')", true);
             }
+                //als er wel een barcode is ingevuld
             else if (tbBarcode.Text != "")
             {
                 List<Dictionary<string, object>> dataHuur = adb.huurItemBarcode(tbBarcode.Text);
@@ -45,10 +48,12 @@ namespace WebApplication1.Rent
 
         void lbHuur_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //zet item in een string
             string item = lbHuur.SelectedItem.Text;
             if (adb.getSubCategories(item) != null)
             {
                 lbHuur.Items.Clear();
+                //haal subcategorie op
                 foreach (Category c in adb.getSubCategories(item))
                 {
                     lbHuur.Items.Add(new ListItem(c.Name));

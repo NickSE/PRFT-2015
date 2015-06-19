@@ -10,8 +10,8 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="../StyleSheet.css" />  
-    <script language="javascript">
+    <link rel="stylesheet" href="../resource/style/theme.css" />
+        <script language="javascript">
         function lbHuur_DoubleClick() {
             /* we will change value of this hidden field so 
                      that in 
