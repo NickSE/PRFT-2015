@@ -16,6 +16,7 @@
     <form id="EventManagement" runat="server">
         <header class="col-xs-12 container">
             <div class="col-xs-3">LOGO </div>
+            <!-- Menu -->
             <div class="col-xs-5">
                 <nav>
                     <ul>
@@ -42,7 +43,7 @@
                     <!-- ### Gebruiker aanmaken ### -->
                     <div class="form-group">
                         <h1>Gebruiker aanmaken</h1>
-
+                        <!-- Persoons gegevens -->
                         <label for="tbNameUser">Voornaam:</label><asp:TextBox ID="tbNameUser" runat="server"></asp:TextBox>
                         <label for="tbInsertionUser">Tussenvoegsel:</label><asp:TextBox ID="tbInsertionUser" runat="server"></asp:TextBox>
                         <label for="tbLastnameUser">Achternaam:</label><asp:TextBox ID="tbLastnameUser" runat="server"></asp:TextBox>
@@ -51,11 +52,11 @@
                         <label for="tbCityUser">Woonplaats:</label><asp:TextBox ID="tbCityUser" runat="server"></asp:TextBox>
                         <label for="tbBanknrUser">Banknummer:</label><asp:TextBox ID="tbBanknrUser" runat="server"></asp:TextBox>
                         <label for="tbEmailUser">Email:</label><asp:TextBox ID="tbEmailUser" runat="server"></asp:TextBox>
-
+                        <!-- reservering gegevens -->
                         <label for="startdateRes">Startdatum:</label><asp:Calendar ID="startdateRes" runat="server"></asp:Calendar>
                         <label for="enddateRes">Einddatum:</label><asp:Calendar ID="enddateRes" runat="server"></asp:Calendar>
                         <label for="cbPayedRes">Betaald:</label><asp:CheckBox ID="cbPayedRes" runat="server"></asp:CheckBox>
-
+                        <!-- submit button -->
                         <asp:Button ID="btnCreateUser" class="btn btn-default" runat="server" Text="Gebruiker Aanmaken" OnClick="btnCreateUser_Click"></asp:Button>
                     </div>
 			    </main>

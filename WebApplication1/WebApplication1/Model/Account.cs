@@ -7,25 +7,18 @@ namespace WebApplication1.Model
 {
     public class Account
     {
-        private int id;
-        private string username;
-        public string Username { get { return username; } }
-
-        public Account(int id)
-        {
-            this.id = id;
-
-            // Get username from db
-            //username = ADatabase.getUsername(id);
-        }
-
-        public Account(int id, string username, string email, string activatiehash)
+        public int id { get; set; }
+        public string username { get; set; }
+        public string email { get; set; }
+        public string activatiehash { get; set; }
+        public string active { get; set; }
+        public Account(int id, string username, string email, string activatiehash, string active)
         {
             this.id = id;
             this.username = username;
-
-            // Create account in db
-            //ADatabase.newAccount(id, username, email, activatiehash);
+            this.email = email;
+            this.activatiehash = activatiehash;
+            this.active = active;
         }
     }
 }

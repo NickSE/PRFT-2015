@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using WebApplication1.DB;
+using WebApplication1.Model;
 
 namespace WebApplication1.UserManagement
 {
@@ -37,12 +38,16 @@ namespace WebApplication1.UserManagement
 
                 DateTime startdate = startdateRes.SelectedDate;
                 DateTime enddate = enddateRes.SelectedDate;
-                bool payed = cbPayedRes.Checked;
+                string payed;
+                if (cbPayedRes.Checked) { payed = "1"; }
+                else { payed = "0"; }
 
                 int id = db.getLatestId("persoon");
                 User newUser = new User(id, name, insertion, lastname, street, number, city, banknr, email);
                 Reservation newReservation = new Reservation(db.getLatestId("reservering"), id, startdate, enddate, payed);
-                if (udb.AddUser(newUser) && udb.AddRes(newReservation))
+                // id, gebruikersnaam, email, hash, actief
+                Account newAccount = new Account(db.getLatestId("account"), name + id, email, "RANDOM", "1");
+                if (udb.AddUser(newUser) && udb.AddRes(newReservation) && udb.AddAccount(newAccount))
                 {
                     //feedback
                     RefreshUserList();
