@@ -22,11 +22,15 @@ namespace WebApplication1.Rent
         void lbHuur_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = lbHuur.SelectedItem.Text;
-            lbHuur.Items.Clear();
-            foreach (Category c in adb.getSubCategories(item))
+            if (adb.getSubCategories(item) != null)
             {
-                lbHuur.Items.Add(new ListItem(c.Name));
+                lbHuur.Items.Clear();
+                foreach (Category c in adb.getSubCategories(item))
+                {
+                    lbHuur.Items.Add(new ListItem(c.Name));
+                }
             }
+             
         }
 
         void lbHuur_DoubleClick(object sender, EventArgs e)
