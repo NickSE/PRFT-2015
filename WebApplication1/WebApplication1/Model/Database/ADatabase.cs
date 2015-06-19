@@ -35,16 +35,16 @@ namespace WebApplication1.DB
             }
         }
 
-        public bool getAllEntries()
+        public List<Dictionary<string, object>> getAllEntries()
         {
             try
             {
-                doQuery("SELECT DISTINCT \"voornaam\", \"tussenvoegsel\", \"achternaam\" FROM persoon p left join reservering r on p.id = r.\"persoon_id\" left join reservering_polsbandje re on r.id = re.\"reservering_id\" where \"aanwezig\" = 1");
-                return true;
+                List<Dictionary<string, object>> data = getQuery("SELECT DISTINCT \"voornaam\", NVL(\"tussenvoegsel\", ' ') tussenvoegsel, \"achternaam\" FROM persoon p left join reservering r on p.id = r.\"persoon_id\" left join reservering_polsbandje re on r.id = re.\"reservering_id\" where \"aanwezig\" = 1");
+                return data;
             }
             catch
             {
-                return false;
+                return null;
             }
         }
         public bool activateCode(int id, string barcode)

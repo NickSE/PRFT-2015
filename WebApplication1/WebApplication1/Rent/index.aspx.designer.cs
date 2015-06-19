@@ -49,15 +49,6 @@ namespace WebApplication1.Rent {
         protected global::System.Web.UI.WebControls.CheckBox cbAlles;
         
         /// <summary>
-        /// lblAlles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAlles;
-        
-        /// <summary>
         /// cbHuurbaar control.
         /// </summary>
         /// <remarks>
@@ -67,15 +58,6 @@ namespace WebApplication1.Rent {
         protected global::System.Web.UI.WebControls.CheckBox cbHuurbaar;
         
         /// <summary>
-        /// lblHuurbaar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHuurbaar;
-        
-        /// <summary>
         /// cbVerhuurd control.
         /// </summary>
         /// <remarks>
@@ -83,15 +65,6 @@ namespace WebApplication1.Rent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cbVerhuurd;
-        
-        /// <summary>
-        /// lblVerhuurd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVerhuurd;
         
         /// <summary>
         /// eventbeheer control.
@@ -121,15 +94,6 @@ namespace WebApplication1.Rent {
         protected global::System.Web.UI.WebControls.TextBox tbItemID;
         
         /// <summary>
-        /// calStart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calStart;
-        
-        /// <summary>
         /// tbBarcode control.
         /// </summary>
         /// <remarks>
@@ -137,6 +101,15 @@ namespace WebApplication1.Rent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbBarcode;
+        
+        /// <summary>
+        /// calStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calStart;
         
         /// <summary>
         /// calEind control.

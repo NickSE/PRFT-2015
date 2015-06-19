@@ -47,11 +47,11 @@
                     <div class="form-group">
                         <label >Toon</label>
                         <asp:CheckBox ID="cbAlles" runat="server" />
-                        <asp:Label ID="lblAlles" runat="server" Text="Alles"></asp:Label>
+                        <label for:"cbAlles">Alles</label>
                         <asp:CheckBox ID="cbHuurbaar" runat="server" />
-                        <asp:Label ID="lblHuurbaar" runat="server" Text="Huurbaar"></asp:Label>
+                        <label for:"cbHuurbaar">Huurbaar</label>
                         <asp:CheckBox ID="cbVerhuurd" runat="server" />
-                        <asp:Label ID="lblVerhuurd" runat="server" Text="Verhuurd"></asp:Label>
+                        <label for:"cbVerhuurd">Verhuurd</label>
                     </div>                    
                 </aside>
             </div>
@@ -68,8 +68,8 @@
                     <div class="form-group">
                         <h1>Item Huren</h1>
                         <label for="tbItemID">Item ID:</label><asp:TextBox ID="tbItemID" runat="server"></asp:TextBox>
-                        <label for="calStart">Startdatum:</label><asp:Calendar ID="calStart" runat="server"></asp:Calendar>
                         <label for="tbBarcode">Barcode:</label><asp:TextBox ID="tbBarcode" runat="server"></asp:TextBox>
+                        <label for="calStart">Startdatum:</label><asp:Calendar ID="calStart" runat="server"></asp:Calendar>
                         <label for="calEind">Einddatum:</label><asp:Calendar ID="calEind" runat="server"></asp:Calendar>
                         <asp:CheckBox ID="cbVerhuurd2" runat="server" /><label for="cbVerhuurd2">Verhuurd</label>
                         <asp:Button ID="btnHuur" class="btn btn-default" runat="server" Text="Huur" ></asp:Button>
