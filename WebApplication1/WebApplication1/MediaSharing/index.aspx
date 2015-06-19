@@ -146,8 +146,9 @@
                 data: '{id: ' + id + ', message: "' + m + '"}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: function (response) {
-                    ret = response.d;
+                success: function () {
+                    $("#commentfield_" + id).children(".comments").prepend("<div class=\"comment\"><div class=\"author\">" + $("#user").text() + "</div> \n <div class=\"content\">"+m+"</div><div class=\"time\">Net</div></div>");
+                    $("#comment_content_" + id).val("");
                 }
             });
         }

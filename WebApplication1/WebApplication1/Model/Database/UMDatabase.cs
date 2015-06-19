@@ -15,7 +15,7 @@ namespace WebApplication1.DB
             List<Dictionary<string, object>> AllUsers = getQuery("SELECT * FROM persoon ORDER BY id");
             foreach (Dictionary<string, object> user in AllUsers)
             {
-                ret.Add(new User(Convert.ToInt32(user["id"]), Convert.ToString(user["voornaam"]), Convert.ToString(user["tussenvoegsel"]), Convert.ToString(user["achternaam"]), Convert.ToString(user["straat"]), Convert.ToString(user["huisnr"]), Convert.ToString(user["woonplaats"]), Convert.ToString(user["banknr"])));
+                ret.Add(new User(Convert.ToInt32(user["id"]), Convert.ToString(user["voornaam"]), Convert.ToString(user["tussenvoegsel"]), Convert.ToString(user["achternaam"]), Convert.ToString(user["straat"]), Convert.ToString(user["huisnr"]), Convert.ToString(user["woonplaats"]), Convert.ToString(user["banknr"]), Convert.ToString(user["email"])));
             }
 
             return ret;
@@ -25,7 +25,7 @@ namespace WebApplication1.DB
             List<Dictionary<string, object>> AllUsers = getQuery("SELECT * FROM persoon WHERE id = " + id + " ORDER BY id");
             foreach (Dictionary<string, object> user in AllUsers)
             {
-                User ret = new User(Convert.ToInt32(user["id"]), Convert.ToString(user["voornaam"]), Convert.ToString(user["tussenvoegsel"]), Convert.ToString(user["achternaam"]), Convert.ToString(user["straat"]), Convert.ToString(user["huisnr"]), Convert.ToString(user["woonplaats"]), Convert.ToString(user["banknr"]));
+                User ret = new User(Convert.ToInt32(user["id"]), Convert.ToString(user["voornaam"]), Convert.ToString(user["tussenvoegsel"]), Convert.ToString(user["achternaam"]), Convert.ToString(user["straat"]), Convert.ToString(user["huisnr"]), Convert.ToString(user["woonplaats"]), Convert.ToString(user["banknr"]), Convert.ToString(user["email"]));
                 return ret;
             }
 
@@ -37,7 +37,7 @@ namespace WebApplication1.DB
             {
                 string query;
                 query = "INSERT INTO PERSOON VALUES(";
-                query += user.id + ", '" + user.name + "', '" + user.insertion + "', '" + user.lastname + "', '" + user.street + "', '" + user.number + "', '" + user.city + "', '" + user.banknr + "')";
+                query += user.id + ", '" + user.name + "', '" + user.insertion + "', '" + user.lastname + "', '" + user.street + "', '" + user.number + "', '" + user.city + "', '" + user.banknr + "', '" + user.email + "')";
                 doQuery(query);
                 return true;
             }

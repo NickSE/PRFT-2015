@@ -115,8 +115,7 @@ namespace WebApplication1.EventManagement
 
         protected void btnRemoveSpecificationPlek_Click(object sender, EventArgs e)
         {
-            lbSpecificationPlek.Items.Remove(lbSpecificationPlek.SelectedItem);
-
+            lbSpecificationPlek.Items.RemoveAt(lbSpecificationPlek.SelectedIndex);
         }
 
         protected void btnRemoveLocation_Click(object sender, EventArgs e)

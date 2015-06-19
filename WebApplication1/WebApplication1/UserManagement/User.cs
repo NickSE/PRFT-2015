@@ -15,7 +15,8 @@ namespace WebApplication1.UserManagement
         public string number { get; set; }
         public string city { get; set; }
         public string banknr { get; set; }
-        public User(int id, string name, string insertion, string lastname, string street, string number, string city, string banknr)
+        public string email { get; set; }
+        public User(int id, string name, string insertion, string lastname, string street, string number, string city, string banknr, string email)
         {
             this.id = id;
             this.name = name;
@@ -25,6 +26,7 @@ namespace WebApplication1.UserManagement
             this.number = number;
             this.city = city;
             this.banknr = banknr;
+            this.email = email;
         }
         public override string ToString()
         {

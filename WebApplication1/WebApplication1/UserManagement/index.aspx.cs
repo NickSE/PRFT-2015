@@ -33,7 +33,8 @@ namespace WebApplication1.UserManagement
                 string number = tbNumberUser.Text;
                 string city = tbCityUser.Text;
                 string banknr = tbBanknrUser.Text;
-                User newUser = new User(db.getLatestId("persoon"), name, insertion, lastname, street, number, city, banknr);
+                string email = tbEmailUser.Text;
+                User newUser = new User(db.getLatestId("persoon"), name, insertion, lastname, street, number, city, banknr, email);
 
                 if (udb.AddUser(newUser))
                 {
@@ -71,7 +72,7 @@ namespace WebApplication1.UserManagement
             if (lbUser.SelectedItem.Value != null)
             {
                 User selectedUser = udb.GetUser(Convert.ToInt32(lbUser.SelectedItem.Value));
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + selectedUser.name + " " + selectedUser.insertion + " " + selectedUser.lastname + " " + selectedUser.street + " " + selectedUser.number + " " + selectedUser.city + " " + selectedUser.banknr + "');", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + selectedUser.name + " " + selectedUser.insertion + " " + selectedUser.lastname + " " + selectedUser.street + " " + selectedUser.number + " " + selectedUser.city + " " + selectedUser.banknr + " " + selectedUser.email +"');", true);
             }
         }
         private void RefreshUserList()
