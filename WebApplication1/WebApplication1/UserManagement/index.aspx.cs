@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 using WebApplication1.DB;
 using WebApplication1.Model;
+using System.Net.Mail;
 
 namespace WebApplication1.UserManagement
 {
@@ -43,14 +44,35 @@ namespace WebApplication1.UserManagement
                 else { payed = "0"; }
 
                 int id = db.getLatestId("persoon");
+                //Generate random hash.
+                string hash = "Random";
                 User newUser = new User(id, name, insertion, lastname, street, number, city, banknr, email);
                 Reservation newReservation = new Reservation(db.getLatestId("reservering"), id, startdate, enddate, payed);
                 // id, gebruikersnaam, email, hash, actief
-                Account newAccount = new Account(db.getLatestId("account"), name + id, email, "RANDOM", "1");
+                Account newAccount = new Account(db.getLatestId("account"), name + id, email, hash, "1");
                 if (udb.AddUser(newUser) && udb.AddRes(newReservation) && udb.AddAccount(newAccount))
                 {
-                    //feedback
-                    RefreshUserList();
+                    try
+                    {
+                        //Sending email for activation code
+                        MailMessage mailMessage = new MailMessage();
+                        mailMessage.To.Add(email); //Reciever
+                        mailMessage.From = new MailAddress("another@mail-address.com"); //Sender
+                        mailMessage.Subject = "Account verification " + email;
+                        mailMessage.Body = "Verification mail for " + email + ". Your activation hash is " + hash + ", use this to acctivate your account.";
+                        SmtpClient smtpClient = new SmtpClient("smtp.your-isp.com"); //smtp from server
+                        smtpClient.Send(mailMessage);
+                        //Response.Write("E-mail sent!"); FEEDBACK
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write("Could not send the e-mail - error: " + ex.Message);
+                    }
+                    finally
+                    {
+                        //feedback
+                        RefreshUserList();
+                    }
                 }
                 else
                 {
