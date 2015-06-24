@@ -24,25 +24,32 @@ namespace WebApplication1.Rent
 
         void btnHuur_Click(object sender, EventArgs e)
         {
-            //als er geen barcode is ingevuld (dus via listbox)
-            if (tbBarcode.Text == "")
+            try
             {
-                List<Dictionary<string, object>> data = adb.huurItem(lbHuur.SelectedValue);
-                Dictionary<string, object> cur = data[0];
-                string item = (string)cur["serie"];
-                string merk = (string)cur["merk"];
-                string prijs = Convert.ToString(cur["prijs"]) + " euro";
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Weet u zeker dat u het product: " + item + " van het merk: " + merk + " wilt huren voor: " + prijs + "?')", true);
-            }
+                //als er geen barcode is ingevuld (dus via listbox)
+                if (tbBarcode.Text == "")
+                {
+                    List<Dictionary<string, object>> data = adb.huurItem(lbHuur.SelectedValue);
+                    Dictionary<string, object> cur = data[0];
+                    string item = (string)cur["serie"];
+                    string merk = (string)cur["merk"];
+                    string prijs = Convert.ToString(cur["prijs"]) + " euro";
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Weet u zeker dat u het product: " + item + " van het merk: " + merk + " wilt huren voor: " + prijs + "?')", true);
+                }
                 //als er wel een barcode is ingevuld
-            else if (tbBarcode.Text != "")
+                else if (tbBarcode.Text != "")
+                {
+                    List<Dictionary<string, object>> dataHuur = adb.huurItemBarcode(tbBarcode.Text);
+                    Dictionary<string, object> curr = dataHuur[0];
+                    string itemB = (string)curr["serie"];
+                    string merkB = (string)curr["merk"];
+                    string prijsB = Convert.ToString(curr["prijs"]) + " euro";
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Weet u zeker dat u het product: " + itemB + " van het merk: " + merkB + " wilt huren voor: " + prijsB + "?')", true);
+                }
+            }
+            catch
             {
-                List<Dictionary<string, object>> dataHuur = adb.huurItemBarcode(tbBarcode.Text);
-                Dictionary<string, object> curr = dataHuur[0];
-                string itemB = (string)curr["serie"];
-                string merkB = (string)curr["merk"];
-                string prijsB = Convert.ToString(curr["prijs"]) + " euro";
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Weet u zeker dat u het product: " + itemB + " van het merk: " + merkB + " wilt huren voor: " + prijsB + "?')", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Ongeldige informatie!')", true);
             }
         }
 
