@@ -55,13 +55,7 @@ namespace WebApplication1.UserManagement
                     try
                     {
                         //Sending email for activation code
-                        MailMessage mailMessage = new MailMessage();
-                        mailMessage.To.Add(email); //Reciever
-                        mailMessage.From = new MailAddress("another@mail-address.com"); //Sender
-                        mailMessage.Subject = "Account verification " + email;
-                        mailMessage.Body = "Verification mail for " + email + ". Your activation hash is " + hash + ", use this to acctivate your account.";
-                        SmtpClient smtpClient = new SmtpClient("smtp.your-isp.com"); //smtp from server
-                        smtpClient.Send(mailMessage);
+                        SendMail(email, hash, Convert.ToString(name + id));
                         //Response.Write("E-mail sent!"); FEEDBACK
                     }
                     catch (Exception ex)
@@ -115,6 +109,16 @@ namespace WebApplication1.UserManagement
             {
                 lbUser.Items.Add(new ListItem(user.ToString(), Convert.ToString(user.id)));
             }
+        }
+        private void SendMail(string email, string hash, string username)
+        {
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.To.Add(email); //Reciever
+            mailMessage.From = new MailAddress("another@mail-address.com"); //Sender
+            mailMessage.Subject = "Account verification " + email;
+            mailMessage.Body = "Verification mail for " + email + ". Your activation hash is " + hash + ", use this to acctivate your account. Username is " + username + " with " + password + " as password.";
+            SmtpClient smtpClient = new SmtpClient("smtp.your-isp.com"); //smtp from server
+            smtpClient.Send(mailMessage);
         }
     }
 }
