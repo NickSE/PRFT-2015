@@ -116,7 +116,7 @@ namespace WebApplication1.UserManagement
             mailMessage.To.Add(email); //Reciever
             mailMessage.From = new MailAddress("another@mail-address.com"); //Sender
             mailMessage.Subject = "Account verification " + email;
-            mailMessage.Body = "Verification mail for " + email + ". Your activation hash is " + hash + ", use this to acctivate your account. Username is " + username + " with " + password + " as password.";
+            mailMessage.Body = "Verification mail for " + email + ". Your activation hash is " + hash + ", use this to acctivate your account. Username is " + username;
             SmtpClient smtpClient = new SmtpClient("smtp.your-isp.com"); //smtp from server
             smtpClient.Send(mailMessage);
         }
